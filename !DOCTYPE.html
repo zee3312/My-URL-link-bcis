@@ -27,6 +27,9 @@
       color: #003366;
       margin-bottom: 20px; /* Space below the date-time */
     }
+    .date-time span {
+      display: inline-block; /* Ensure they are on the same line */
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -53,7 +56,9 @@
 
 <div class="container">
   <h1>Prayer Times</h1>
-  <div class="date-time">Date: <span id="current-date">Loading...</span> | Time: <span id="current-time">Loading...</span></div>
+  <div class="date-time">
+    Date: <span id="current-date">Loading...</span> | Time: <span id="current-time">Loading...</span>
+  </div>
   <table>
     <thead>
       <tr>
