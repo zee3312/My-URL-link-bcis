@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,9 +20,8 @@
       color: navy;
       margin-bottom: 5px;
     }
-    .date, .time {
-      font-size: 30px; /* Larger font size for date and time */
-      font-weight: bold;
+    .date {
+      font-size: 30px; /* Smaller font for the date */
       color: #003366;
     }
     table {
@@ -31,7 +29,7 @@
       border-collapse: collapse;
     }
     th, td {
-      padding: 10px; /* Reduced padding */
+      padding: 20px;
       font-size: 60px; /* Same font size as header for prayer times */
       font-weight: bold;
       color: #003366;
@@ -46,22 +44,16 @@
     td {
       background-color: #f0f8ff; /* Light blue row background */
     }
-    thead tr:first-child th {
-      padding-bottom: 5px; /* Reduced space below "Bay County Islamic Society" */
-    }
-    thead tr:last-child th {
-      padding-top: 5px; /* Reduced space above column headers */
-    }
   </style>
 </head>
 <body>
 
 <div class="container">
   <h1>Prayer Times</h1>
-  <div class="date"> <span id="current-date">Loading...</span></div>
+  <div class="date">Date: <span id="current-date">Loading...</span></div>
   <table>
     <thead>
-      <tr>
+            <tr>
         <th colspan="3">Bay County Islamic Society</th>
       </tr>
       <tr>
@@ -125,6 +117,8 @@
   fetchPrayerTimes();
 </script>
 
+</body>
+</html>
 <style>
   .logo {
     position: fixed;
@@ -133,7 +127,4 @@
     width: 150px; /* Adjust the size as needed */
   }
 </style>
-<img src="bcisprayertime/logo.png" alt="Logo" class="logo">
-
-</body>
-</html>
+<img src="logo.png" alt="Logo" class="logo">
