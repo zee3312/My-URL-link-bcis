@@ -22,13 +22,11 @@
       margin-bottom: 5px;
     }
     .date-time {
-      font-size: 40px; /* Larger font size for date and time */
-      font-weight: bold; /* Make date and time bold */
+      font-size: 30px; /* Adjust font size */
+      font-weight: bold; /* Make bold */
       color: #003366;
-      margin-bottom: 20px; /* Space below the date-time */
-    }
-    .date-time span {
-      display: inline-block; /* Ensure they are on the same line */
+      display: inline-block;
+      margin-bottom: 20px;
     }
     table {
       width: 100%;
@@ -45,10 +43,16 @@
     th {
       background-color: #003366;
       color: white;
-      font-weight: bold;
     }
     td {
       background-color: #f0f8ff; /* Light blue row background */
+    }
+    .logo {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 150px;
+      z-index: 9999; /* Ensure logo appears above other elements */
     }
   </style>
 </head>
@@ -57,7 +61,7 @@
 <div class="container">
   <h1>Prayer Times</h1>
   <div class="date-time">
-    Date: <span id="current-date">Loading...</span> | Time: <span id="current-time">Loading...</span>
+    Date: <span id="current-date">Loading...</span> | Current Time: <span id="current-time">Loading...</span>
   </div>
   <table>
     <thead>
@@ -136,15 +140,7 @@
   setInterval(displayCurrentTime, 1000);
 </script>
 
+<img src="bcisprayertime/logo.png" alt="Logo" class="logo">
+
 </body>
 </html>
-
-<style>
-  .logo {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 150px; /* Adjust the size as needed */
-  }
-</style>
-<img src="bcisprayertime/logo.png" alt="Logo" class="logo">
