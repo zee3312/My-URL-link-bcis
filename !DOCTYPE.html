@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,18 +21,20 @@
             margin-bottom: 5px;
         }
         .date {
-            font-size: 30px; /* Font size for date and time */
+            font-size: 30px; /* This can stay as is for mobile */
             color: #003366;
-            margin: 20px 0; /* Add margin for spacing */
+        }
+        .label {
+            font-size: 60px; /* Set to match the prayer times data size */
+            color: #003366; /* You can adjust the color if needed */
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px; /* Add margin to the bottom of the table */
         }
         th, td {
             padding: 20px;
-            font-size: 60px; /* Font size for prayer times */
+            font-size: 60px; /* Same font size as header for prayer times */
             font-weight: bold;
             color: #003366;
             border: 2px solid #003366;
@@ -66,8 +67,8 @@
 <div class="container">
     <h1>Prayer Times</h1>
     <div class="date">
-        Date: <span id="current-date">Loading...</span> 
-        | Time: <span id="current-time">Loading...</span>
+        <span class="label">Date:</span> <span id="current-date">Loading...</span> 
+        | <span class="label">Time:</span> <span id="current-time">Loading...</span>
     </div>
 
     <table>
@@ -110,8 +111,6 @@
         </tbody>
     </table>
 </div>
-<img src="logo.png" alt="Logo" class="logo">
-
 <script>
     async function fetchPrayerTimes() {
         const response = await fetch('https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ');
@@ -130,21 +129,10 @@
         document.getElementById('isha-time').textContent = salah.isha;
         document.getElementById('isha-iqamah').textContent = iqamah.isha;
     }
-    
     // Refresh prayer times daily
     setInterval(fetchPrayerTimes, 24 * 60 * 60 * 1000);
     fetchPrayerTimes();
-
-    function updateDateTime() {
-        const now = new Date();
-        document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
-        document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    }
-
-    updateDateTime(); // Run when the page loads
-    setInterval(updateDateTime, 1000); // Update every second
 </script>
-
 <style>
     .logo {
         position: fixed;
@@ -158,6 +146,16 @@
         }
     }
 </style>
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+        document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    updateDateTime(); // Run when the page loads
+    setInterval(updateDateTime, 1000); // Update every second
+</script>
+<img src="logo.png" alt="Logo" class="logo">
 </body>
 </html>
-
