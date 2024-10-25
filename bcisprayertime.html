@@ -143,6 +143,16 @@
         }
     }
 </style>
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+            document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+
+        updateDateTime(); // Run when the page loads
+        setInterval(updateDateTime, 1000); // Update every second
+    </script>
 <img src="logo.png" alt="Logo" class="logo">
 </body>
 </html>
