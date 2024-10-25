@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,9 +31,8 @@
             font-weight: bold; /* Make labels bold */
         }
         .data {
-            font-size: 40px; /* Ensure the data font size matches the labels */
-            color: #003366; /* Optional: Adjust color as needed */
-            font-weight: bold; /* Make data bold */
+            font-size: 40px; /* Set the same font size for the data */
+            color: #003366; /* Match label color */
         }
     
         table {
@@ -62,12 +60,15 @@
                 margin: 20px auto;
                 padding: 10px;
             }
-            h1, .date, .label, .data { /* Add .data here */
+            h1, .date {
+                font-size: 30px;
+            }
+            .label, .data {
                 font-size: 30px; /* Adjust label and data font size for mobile */
             }
             th, td {
                 padding: 10px;
-                font-size: 30px; /* Adjust size for table cells */
+                font-size: 30px;
             }
         }
     </style>
