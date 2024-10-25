@@ -133,11 +133,16 @@
 </body>
 </html>
 <style>
-  .logo {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 150px; /* Adjust the size as needed */
-  }
+    .logo {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 200px; /* Adjust the size as needed */
+    }
+    @media (max-width: 768px) {
+        .logo {
+            width: 100px; /* Adjust the size for mobile */
+        }
+    }
 </style>
 <img src="logo.png" alt="Logo" class="logo">
