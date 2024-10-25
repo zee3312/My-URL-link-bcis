@@ -23,10 +23,16 @@
         .date {
             font-size: 30px; /* This can stay as is for mobile */
             color: #003366;
+            font-weight: bold; /* Make date container bold */
         }
         .label {
             font-size: 60px; /* Set to match the prayer times data size */
             color: #003366; /* You can adjust the color if needed */
+            font-weight: bold; /* Make labels bold */
+        }
+        .data {
+            font-size: 60px; /* Set to match the label size */
+            font-weight: bold; /* Make data bold */
         }
         table {
             width: 100%;
@@ -67,8 +73,8 @@
 <div class="container">
     <h1>Prayer Times</h1>
     <div class="date">
-        <span class="label">Date:</span> <span id="current-date">Loading...</span> 
-        | <span class="label">Time:</span> <span id="current-time">Loading...</span>
+        <span class="label">Date:</span> <span id="current-date" class="data">Loading...</span> 
+        | <span class="label">Time:</span> <span id="current-time" class="data">Loading...</span>
     </div>
 
     <table>
