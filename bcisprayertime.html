@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,9 +22,16 @@
             margin-bottom: 5px;
         }
         .date {
-            font-size: 30px; /* Same font size as header for prayer times */
+            font-size: 40px; /* This can stay as is for mobile */
             color: #003366;
+            font-weight: bold; /* Make date container bold */
         }
+        .label {
+            font-size: 40px; /* Set to match the prayer times data size */
+            color: #003366; /* You can adjust the color if needed */
+            font-weight: bold; /* Make labels bold */
+        }
+    
         table {
             width: 100%;
             border-collapse: collapse;
@@ -63,10 +70,10 @@
 <body>
 <div class="container">
     <h1>Prayer Times</h1>
-   <div class="date">
-    Date: <span id="current-date">Loading...</span> 
-    | Time: <span id="current-time">Loading...</span>
-</div>
+    <div class="date">
+        <span class="label">Date:</span> <span id="current-date" class="data">Loading...</span> 
+        | <span class="label">Time:</span> <span id="current-time" class="data">Loading...</span>
+    </div>
 
     <table>
         <thead>
@@ -143,16 +150,16 @@
         }
     }
 </style>
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
-            document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        }
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+        document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
 
-        updateDateTime(); // Run when the page loads
-        setInterval(updateDateTime, 1000); // Update every second
-    </script>
+    updateDateTime(); // Run when the page loads
+    setInterval(updateDateTime, 1000); // Update every second
+</script>
 <img src="logo.png" alt="Logo" class="logo">
 </body>
 </html>
