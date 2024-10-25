@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +11,11 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         .container {
-            margin: 50px auto;
+            margin: 20px auto; /* Adjusted margin for less space above */
             max-width: 1200px;
         }
         h1 {
@@ -20,24 +23,15 @@
             color: navy;
             margin-bottom: 5px;
         }
-        .date {
-            font-size: 40px; /* This can stay as is for mobile */
+        .date-time {
+            font-size: 40px; /* Same font size for label and data */
             color: #003366;
-            font-weight: bold; /* Make date container bold */
+            font-weight: bold; /* Bold style */
         }
-        .label {
-            font-size: 40px; /* Set to match the prayer times data size */
-            color: #003366; /* You can adjust the color if needed */
-            font-weight: bold; /* Make labels bold */
-        }
-        .data {
-            font-size: 40px; /* Set the same font size for the data */
-            color: #003366; /* Match label color */
-        }
-    
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px; /* Less space above table */
         }
         th, td {
             padding: 20px;
@@ -60,11 +54,8 @@
                 margin: 20px auto;
                 padding: 10px;
             }
-            h1, .date {
+            h1, .date-time {
                 font-size: 30px;
-            }
-            .label, .data {
-                font-size: 30px; /* Adjust label and data font size for mobile */
             }
             th, td {
                 padding: 10px;
@@ -76,11 +67,9 @@
 <body>
 <div class="container">
     <h1>Prayer Times</h1>
-    <div class="date">
-        <span class="label">Date:</span> <span id="current-date" class="data">Loading...</span> 
-        | <span class="label">Time:</span> <span id="current-time" class="data">Loading...</span>
+    <div class="date-time">
+        <span>Date: <span id="current-date">Loading...</span> | Time: <span id="current-time">Loading...</span></span>
     </div>
-
     <table>
         <thead>
             <tr>
@@ -139,8 +128,14 @@
         document.getElementById('isha-time').textContent = salah.isha;
         document.getElementById('isha-iqamah').textContent = iqamah.isha;
     }
-    // Refresh prayer times daily
-    setInterval(fetchPrayerTimes, 24 * 60 * 60 * 1000);
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+        document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    setInterval(updateDateTime, 1000); // Update every second
+    updateDateTime(); // Initialize time when page loads
+    setInterval(fetchPrayerTimes, 24 * 60 * 60 * 1000); // Refresh prayer times daily
     fetchPrayerTimes();
 </script>
 <style>
@@ -156,16 +151,6 @@
         }
     }
 </style>
-<script>
-    function updateDateTime() {
-        const now = new Date();
-        document.getElementById("current-date").textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
-        document.getElementById("current-time").textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    }
-
-    updateDateTime(); // Run when the page loads
-    setInterval(updateDateTime, 1000); // Update every second
-</script>
 <img src="logo.png" alt="Logo" class="logo">
 </body>
 </html>
