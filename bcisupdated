@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Prayer Times</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5dc;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            height: 150vh;
+            transform-origin: top left;
+        }
+         /* Scale for smaller screens */
+        @media (max-width: 1024px) {
+            body {
+                transform: scale(0.8); /* Adjust scaling as needed */
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                transform: scale(0.6); /* Further scaling */
+            }
+        }
+
+        .container {
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .heading {
+            display: inline-block;
+            text-align: left;
+        }
+        h1, .date {
+            font-size: 50px;
+            color: #e0f7fa;
+            background-color: #003366;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 0;
+        }
+        .date {
+            font-size: 35px;
+            margin-top: 5px;
+        }
+        .clock-container {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 30px;
+        }
+        .digital-clock {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 80px;
+            color: #ffffff;
+            background-color: #003366;
+            padding: 8px;
+            border-radius: 10px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            border: 5px solid darkbrown;
+            position: relative;
+            flex-direction: column;
+        }
+        .current-time-label {
+            font-size: 38px;
+            color: #ffffff;
+            margin-bottom: 3px;
+        }
+        .time-container {
+            display: flex;
+            align-items: baseline;
+	    gap: 18px;
+            white-space: nowrap;
+        }
+        .time {
+            font-size: 70px;
+        }
+        .ampm {
+            font-size: 70px;
+        }
+        table {
+            width: 100%;
+	    border-collapse: collapse;
+            margin-top: 10px;
+	    border-radius: 15px; /* Adjust radius as desired */
+        }
+        th, td {
+            padding: 25px;
+            font-size: 50px;
+            font-weight: bold;
+	    
+            color: #003366;
+            border: 5px solid #003366;
+            text-align: center;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+	    
+        }
+        td {
+            background-color: #f0f8ff;
+        }
+        .logo {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+	z-index: 1000; /* Ensures the logo stays on top of other elements */
+        }
+        @media (max-width: 768px) {
+            h1, .date, th, td {
+                font-size: 30px;
+            }
+            .digital-clock {
+                font-size: 40px;
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="heading">
+        <h1>Prayer Times</h1>
+        <div class="date">
+            <span id="current-date">Loading...</span>
+        </div>
+    </div>
+    <div class="clock-container">
+        <div class="digital-clock">
+            <div class="current-time-label">Current Time</div>
+            <div class="time-container">
+                <span class="time" id="time">00:00:00</span>
+                <span class="ampm" id="ampm">AM</span>
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Bay County Islamic Society</th>
+            </tr>
+            <tr>
+                <th>Prayer</th>
+                <th>Time</th>
+                <th>Iqamah</th>
+            </tr>
+        </thead>
+        <tbody id="prayer-times">
+            <tr>
+                <td>Fajr</td>
+                <td id="fajr-time">Loading...</td>
+                <td id="fajr-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Zuhr</td>
+                <td id="zuhr-time">Loading...</td>
+                <td id="zuhr-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Asr</td>
+                <td id="asr-time">Loading...</td>
+                <td id="asr-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Maghrib</td>
+                <td id="maghrib-time">Loading...</td>
+                <td id="maghrib-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Isha</td>
+                <td id="isha-time">Loading...</td>
+                <td id="isha-iqamah">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<img src="logo.png" alt="Logo" class="logo">
+
+<script>
+    async function fetchPrayerTimes() {
+        const response = await fetch('https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ');
+        const data = await response.json();
+        const salah = data.data.salah[0];
+        const iqamah = data.data.iqamah[0];
+        document.getElementById('current-date').textContent = salah.date;
+        document.getElementById('fajr-time').textContent = salah.fajr;
+        document.getElementById('fajr-iqamah').textContent = iqamah.fajr;
+        document.getElementById('zuhr-time').textContent = salah.zuhr;
+        document.getElementById('zuhr-iqamah').textContent = iqamah.zuhr;
+        document.getElementById('asr-time').textContent = salah.asr;
+        document.getElementById('asr-iqamah').textContent = iqamah.asr;
+        document.getElementById('maghrib-time').textContent = salah.maghrib;
+        document.getElementById('maghrib-iqamah').textContent = iqamah.maghrib;
+        document.getElementById('isha-time').textContent = salah.isha;
+        document.getElementById('isha-iqamah').textContent = iqamah.isha;
+    }
+    fetchPrayerTimes();
+
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours % 12 || 12;
+        document.getElementById('time').textContent = `${formattedHours}:${minutes}:${seconds}`;
+        document.getElementById('ampm').textContent = ampm;
+    }
+    setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
