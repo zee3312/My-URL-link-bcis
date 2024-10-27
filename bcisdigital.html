@@ -1,42 +1,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prayer Times</title>
     <style>
         body {
-
             font-family: Arial, sans-serif;
             background-color: #f5f5dc;
             margin: 0;
             padding: 0;
             text-align: center;
-            position: relative; /* Ensure relative positioning for logo */
-            height: 200vh; /* Full viewport height for proper logo positioning */
-
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .container 
-{
-   
-
-            margin: 50px auto;
+        .container {
+            margin: 20px auto;
             max-width: 1200px;
         }
         .heading {
             display: inline-block;
             text-align: left;
-            vertical-align: top;
-            margin-right: 30px;
-            margin-left: 10px; /* Slight left shift */
+            margin: 10px 0 20px;
         }
         h1, .date {
             font-size: 50px;
             color: #e0f7fa;
             background-color: #003366;
             padding: 10px 20px;
-            font-weight: bold;
             border-radius: 8px;
             margin: 0;
+            font-weight: bold;
         }
         .date {
             font-size: 35px;
@@ -44,38 +40,35 @@
         }
         .clock-container {
             display: inline-block;
-            vertical-align: top;
-            margin-left: 30px; /* Space between text and clock */
+            margin-top: 20px;
         }
         .digital-clock {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 80px; /* Thicker font size */
+            font-size: 80px;
             color: #ffffff;
-            background-color: #003366; /* Match prayer time background color */
-            padding: 25px; /* Adjusted padding for height */
+            background-color: #003366;
+            padding: 25px;
             border-radius: 15px;
-            width: 600px; /* Increased width of the digital clock */
+            width: 600px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            line-height: 1.1; /* Adjust line height for better spacing */
-            font-weight: bold; /* Bold font for the digital clock */
-            position: relative; /* Position for the inner text */
-            border: 5px solid darkbrown; /* Dark brown border */
+            font-weight: bold;
+            border: 5px solid #654321;
         }
         .current-time {
-            font-size: 20px; /* Smaller font size for "Current Time" */
-            color: #ffffff; /* White color for contrast */
-            position: absolute; /* Positioning to center it inside the clock */
-            bottom: 10px; /* Position at the bottom of the digital clock */
-            left: 50%; /* Centering horizontally */
-            transform: translateX(-50%); /* Adjust for centering */
-            margin: 0; /* Remove any margin */
+            font-size: 20px;
+            color: #ffffff;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
         }
         .ampm {
-            font-size: 80px; /* Same font size as the digital clock */
-            color: #ffffff; /* White color for contrast */
-            margin-left: 10px; /* Space between time and AM/PM */
-            display: inline; /* Keep it inline with the time */
+            font-size: 80px;
+            color: #ffffff;
+            margin-left: 10px;
+            display: inline;
         }
         table {
             width: 100%;
@@ -93,24 +86,23 @@
         th {
             background-color: #003366;
             color: white;
-            padding: 10px; /* Adjusted padding for smaller header height */
         }
         td {
             background-color: #f0f8ff;
         }
         .logo {
-            position: absolute; /* Use absolute positioning for logo */
-            bottom: 20px; /* Position it 20px from the bottom */
-            right: 20px; /* Align to the right */
-            width: 200px; /* Adjust logo size if needed */
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 100px;
         }
         @media (max-width: 768px) {
             h1, .date, th, td {
                 font-size: 30px;
             }
             .digital-clock {
-                font-size: 40px; /* Adjust font size for smaller screens */
-                width: 380px; /* Width of the digital clock */
+                font-size: 40px;
+                width: 380px;
             }
         }
     </style>
@@ -126,7 +118,7 @@
     <div class="clock-container">
         <div class="digital-clock" id="digital-clock">
             <span id="time">00:00:00</span>
-            <span class="ampm" id="ampm">AM</span> <!-- AM/PM displayed next to the time -->
+            <span class="ampm" id="ampm">AM</span>
             <div class="current-time">Current Time</div>
         </div>
     </div>
@@ -198,9 +190,9 @@
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         const ampm = hours >= 12 ? 'PM' : 'AM';
-        const formattedHours = hours % 12 || 12; // Convert to 12-hour format
+        const formattedHours = hours % 12 || 12;
         document.getElementById('time').textContent = `${formattedHours}:${minutes}:${seconds}`;
-        document.getElementById('ampm').textContent = ampm; // Update AM/PM display
+        document.getElementById('ampm').textContent = ampm;
     }
     setInterval(updateClock, 1000);
 </script>
