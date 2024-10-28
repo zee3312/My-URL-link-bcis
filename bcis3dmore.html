@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3db97;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+        .heading {
+            display: inline-block;
+            text-align: left;
+            margin-right: 30px;
+        }
+        h1, .date {
+            font-size: 50px;
+            color: #e0f7fa;
+            background-color: #003366;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 0;
+background-color: #003366; /* Solid background color */
+background-color: #003366; /* Solid background color */
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.9), /* Top-left inner shadow (lighter) */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.4), /* Bottom-right inner shadow (darker) */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.4), /* Bottom-left inner shadow (darker) */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.9), /* Top-right inner shadow (lighter) */
+    -6px -6px 12px rgba(0, 0, 0, 0.5), /* Stronger top-left outer shadow (darker) */
+    6px 6px 12px rgba(0, 0, 0, 0.5); /* Stronger bottom-right outer shadow (darker) */
+
+border-radius: 15px; /* Adds rounded corners */
+
+
+
+        }
+        .date {
+            font-size: 35px;
+            margin-top: 5px;
+        }
+        .clock-container {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 30px;
+        }
+        .digital-clock {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 80px;
+            color: #ffffff;
+            background-color: #003366;
+            padding: 25px;
+            border-radius: 15px;
+            width: 600px;
+            text-align: center;
+background-color: #003366; /* Solid background color */
+
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.9), /* Top-left inner shadow (lighter) */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.4), /* Bottom-right inner shadow (darker) */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.4), /* Bottom-left inner shadow (darker) */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.9), /* Top-right inner shadow (lighter) */
+    -6px -6px 12px rgba(0, 0, 0, 0.5), /* Stronger top-left outer shadow (darker) */
+    6px 6px 12px rgba(0, 0, 0, 0.5); /* Stronger bottom-right outer shadow (darker) */
+
+border-radius: 15px; /* Adds rounded corners */
+
+
+border-radius: 15px; /* Adds rounded corners */
+
+
+
+            line-height: 1.1;
+            font-weight: bold;
+            position: relative;
+            border: 5px solid darkbrown;
+        }
+        .current-time {
+            font-size: 20px;
+            color: #ffffff;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+        .ampm {
+            font-size: 80px;
+            color: #ffffff;
+            margin-left: 10px;
+            display: inline;
+        }
+        .prayer-time-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: #003366; /* Solid background color */
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.9), /* Top-left inner shadow (lighter) */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.4), /* Bottom-right inner shadow (darker) */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.4), /* Bottom-left inner shadow (darker) */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.9), /* Top-right inner shadow (lighter) */
+    -6px -6px 12px rgba(0, 0, 0, 0.5), /* Stronger top-left outer shadow (darker) */
+    6px 6px 12px rgba(0, 0, 0, 0.5); /* Stronger bottom-right outer shadow (darker) */
+
+border-radius: 15px; /* Adds rounded corners */
+
+            background: #ffffff;
+background-color: #003366; /* Solid background color */
+
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.9), /* Top-left inner shadow (lighter) */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.4), /* Bottom-right inner shadow (darker) */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.4), /* Bottom-left inner shadow (darker) */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.9), /* Top-right inner shadow (lighter) */
+    -6px -6px 12px rgba(0, 0, 0, 0.5), /* Stronger top-left outer shadow (darker) */
+    6px 6px 12px rgba(0, 0, 0, 0.5); /* Stronger bottom-right outer shadow (darker) */
+
+border-radius: 15px; /* Adds rounded corners */
+
+
+border-radius: 15px; /* Adds rounded corners */
+
+        }
+        .prayer-time-table th, .prayer-time-table td {
+            padding: 25px;
+            font-size: 60px;
+            font-weight: bold;
+            color: #003366;
+            text-align: center;
+            border: none;
+            position: relative;
+            background: #f0f8ff;
+            box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.7),
+                        inset 3px 3px 6px rgba(0, 0, 0, 0.15);
+        }
+        .prayer-time-table th {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+                        inset 4px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .prayer-time-table td {
+            background-color: #f0f8ff;
+        }
+        .logo {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 250px;
+        }
+        @media (max-width: 768px) {
+            h1, .date, .prayer-time-table th, .prayer-time-table td {
+                font-size: 30px;
+            }
+            .digital-clock {
+                font-size: 40px;
+                width: 380px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="heading">
+        <h1>Prayer Times</h1>
+        <div class="date">
+            <span id="current-date">Loading...</span>
+        </div>
+    </div>
+    <div class="clock-container">
+        <div class="digital-clock" id="digital-clock">
+            <span id="time">00:00:00</span>
+            <span class="ampm" id="ampm">AM</span>
+            <div class="current-time">Current Time</div>
+        </div>
+    </div>
+    <table class="prayer-time-table">
+        <thead>
+            <tr>
+                <th colspan="3">Bay County Islamic Society</th>
+            </tr>
+            <tr>
+                <th>Prayer</th>
+                <th>Time</th>
+                <th>Iqamah</th>
+            </tr>
+        </thead>
+        <tbody id="prayer-times">
+            <tr>
+                <td>Fajr</td>
+                <td id="fajr-time">Loading...</td>
+                <td id="fajr-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Zuhr</td>
+                <td id="zuhr-time">Loading...</td>
+                <td id="zuhr-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Asr</td>
+                <td id="asr-time">Loading...</td>
+                <td id="asr-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Maghrib</td>
+                <td id="maghrib-time">Loading...</td>
+                <td id="maghrib-iqamah">Loading...</td>
+            </tr>
+            <tr>
+                <td>Isha</td>
+                <td id="isha-time">Loading...</td>
+                <td id="isha-iqamah">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<img src="logo.png" alt="Logo" class="logo">
+
+<script>
+    async function fetchPrayerTimes() {
+        const response = await fetch('https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ');
+        const data = await response.json();
+        const salah = data.data.salah[0];
+        const iqamah = data.data.iqamah[0];
+        document.getElementById('current-date').textContent = salah.date;
+        document.getElementById('fajr-time').textContent = salah.fajr;
+        document.getElementById('fajr-iqamah').textContent = iqamah.fajr;
+        document.getElementById('zuhr-time').textContent = salah.zuhr;
+        document.getElementById('zuhr-iqamah').textContent = iqamah.zuhr;
+        document.getElementById('asr-time').textContent = salah.asr;
+        document.getElementById('asr-iqamah').textContent = iqamah.asr;
+        document.getElementById('maghrib-time').textContent = salah.maghrib;
+        document.getElementById('maghrib-iqamah').textContent = iqamah.maghrib;
+        document.getElementById('isha-time').textContent = salah.isha;
+        document.getElementById('isha-iqamah').textContent = iqamah.isha;
+    }
+    fetchPrayerTimes();
+
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours % 12 || 12;
+        document.getElementById('time').textContent = `${formattedHours}:${minutes}:${seconds}`;
+        document.getElementById('ampm').textContent = ampm;
+    }
+    setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
