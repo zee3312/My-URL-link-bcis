@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prayer Times</title>
     <style>
         body {
@@ -11,36 +11,15 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            position: relative;
-            height: 150vh;
-            transform-origin: top left;
         }
-         /* Scale for smaller screens */
-        @media (max-width: 1024px) {
-            body {
-                /*transform: scale(1);  Adjust scaling as needed */
-            }
-        }
-        @media (max-width: 768px) {
-            body {
-               /* transform: scale(1);  Further scaling */
-            }
-        }
-
         .container {
             margin: 50px auto;
             max-width: 1200px;
         }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
         .heading {
             display: inline-block;
             text-align: left;
+            margin-right: 30px;
         }
         h1, .date {
             font-size: 50px;
@@ -61,77 +40,80 @@
             margin-left: 30px;
         }
         .digital-clock {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-family: 'Courier New', Courier, monospace;
             font-size: 80px;
             color: #ffffff;
             background-color: #003366;
-            padding: 8px;
-            border-radius: 10px;
-            width: 450px;
+            padding: 25px;
+            border-radius: 15px;
+            width: 600px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
             font-weight: bold;
-            border: 5px solid darkbrown;
             position: relative;
-            flex-direction: column;
+            border: 5px solid darkbrown;
         }
-        .current-time-label {
-            font-size: 38px;
+        .current-time {
+            font-size: 20px;
             color: #ffffff;
-            margin-bottom: 3px;
-        }
-        .time-container {
-            display: flex;
-            align-items: baseline;
-	    gap: 18px;
-            white-space: nowrap;
-        }
-        .time {
-            font-size: 70px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
         }
         .ampm {
-            font-size: 70px;
+            font-size: 80px;
+            color: #ffffff;
+            margin-left: 10px;
+            display: inline;
         }
-        table {
+        .prayer-time-table {
             width: 100%;
-	    border-collapse: collapse;
-            margin-top: 10px;
-	    border-radius: 15px; /* Adjust radius as desired */
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            background: #ffffff;
         }
-        th, td {
-            padding: 25px;
-            font-size: 50px;
+        .prayer-time-table th, .prayer-time-table td {
+            padding: 20px;
+            font-size: 60px;
             font-weight: bold;
-	    
             color: #003366;
-            border: 5px solid #003366;
             text-align: center;
+            border: none;
+            position: relative;
+            background: #f0f8ff;
+            box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.7),
+                        inset 3px 3px 6px rgba(0, 0, 0, 0.15);
         }
-        th {
+        .prayer-time-table th {
             background-color: #003366;
             color: white;
-	    
+            padding: 10px;
+            box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+                        inset 4px 4px 8px rgba(0, 0, 0, 0.2);
         }
-        td {
-            background-color: #f0f8ff;
+        .prayer-time-table td {
+            background-color: #e0f7fa;
         }
         .logo {
             position: absolute;
             bottom: 20px;
-            right: 20px;
-            width: 200px;
-	z-index: 1000; /* Ensures the logo stays on top of other elements */
+            right: 0;
+            width: 100px;
         }
         @media (max-width: 768px) {
-            h1, .date, th, td {
+            h1, .date, .prayer-time-table th, .prayer-time-table td {
                 font-size: 30px;
             }
             .digital-clock {
                 font-size: 40px;
-                width: 280px;
+                width: 380px;
             }
         }
     </style>
@@ -145,15 +127,13 @@
         </div>
     </div>
     <div class="clock-container">
-        <div class="digital-clock">
-            <div class="current-time-label">Current Time</div>
-            <div class="time-container">
-                <span class="time" id="time">00:00:00</span>
-                <span class="ampm" id="ampm">AM</span>
-            </div>
+        <div class="digital-clock" id="digital-clock">
+            <span id="time">00:00:00</span>
+            <span class="ampm" id="ampm">AM</span>
+            <div class="current-time">Current Time</div>
         </div>
     </div>
-    <table>
+    <table class="prayer-time-table">
         <thead>
             <tr>
                 <th colspan="3">Bay County Islamic Society</th>
