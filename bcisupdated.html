@@ -29,6 +29,17 @@
             font-weight: bold;
             border-radius: 8px;
             margin: 0;
+background-color: #003366; /* Solid background color */
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.8), /* Top-left inner shadow */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.2), /* Bottom-right inner shadow */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.2), /* Bottom-left inner shadow */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.8), /* Top-right inner shadow */
+    -6px -6px 12px rgba(0, 0, 0, 0.2), /* Stronger top-left outer shadow */
+    6px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger bottom-right outer shadow */
+
+border-radius: 15px; /* Adds rounded corners */
+
         }
         .date {
             font-size: 35px;
@@ -48,7 +59,19 @@
             border-radius: 15px;
             width: 600px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+background-color: #003366; /* Solid background color */
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.8), /* Top-left inner shadow */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.2), /* Bottom-right inner shadow */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.2), /* Bottom-left inner shadow */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.8), /* Top-right inner shadow */
+    -6px -6px 12px rgba(0, 0, 0, 0.2), /* Stronger top-left outer shadow */
+    6px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger bottom-right outer shadow */
+
+border-radius: 15px; /* Adds rounded corners */
+
+
+
             line-height: 1.1;
             font-weight: bold;
             position: relative;
@@ -78,6 +101,17 @@
             overflow: hidden;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
             background: #ffffff;
+background-color: #003366; /* Solid background color */
+box-shadow: 
+    inset -4px -4px 10px rgba(255, 255, 255, 0.8), /* Top-left inner shadow */
+    inset 4px 4px 10px rgba(0, 0, 0, 0.2), /* Bottom-right inner shadow */
+    inset 4px -4px 10px rgba(0, 0, 0, 0.2), /* Bottom-left inner shadow */
+    inset -4px 4px 10px rgba(255, 255, 255, 0.8), /* Top-right inner shadow */
+    -6px -6px 12px rgba(0, 0, 0, 0.2), /* Stronger top-left outer shadow */
+    6px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger bottom-right outer shadow */
+
+border-radius: 15px; /* Adds rounded corners */
+
         }
         .prayer-time-table th, .prayer-time-table td {
             padding: 20px;
@@ -189,7 +223,7 @@
         document.getElementById('asr-time').textContent = salah.asr;
         document.getElementById('asr-iqamah').textContent = iqamah.asr;
         document.getElementById('maghrib-time').textContent = salah.maghrib;
-        document.getElementById('maghrib-iqamah').textContent = iqamah.maghrib; 
+        document.getElementById('maghrib-iqamah').textContent = iqamah.maghrib;
         document.getElementById('isha-time').textContent = salah.isha;
         document.getElementById('isha-iqamah').textContent = iqamah.isha;
     }
