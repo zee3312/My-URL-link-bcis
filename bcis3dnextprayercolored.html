@@ -8,275 +8,468 @@
 
 <style>
 
-    /* =========================================
-       MAIN BACKGROUND
-       ========================================= */
+:root {
+    --henna-green: #4F6F52;
 
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #4F6F52;
-        margin: 0;
-        padding: 0;
-        text-align: center;
+    --light-gold: #D8B85A;
+    --medium-gold: #C9A63F;
+    --dark-gold: #A98224;
+
+    --white: #ffffff;
+
+    --box-blue: #f0f8ff;
+    --box-blue-dark: #c5dceb;
+}
+
+
+/* =========================================
+   BODY
+   ========================================= */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--henna-green);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+
+/* =========================================
+   TITLE AND DATE
+   ========================================= */
+
+.heading {
+    display: inline-block;
+    text-align: left;
+    margin-right: 30px;
+}
+
+h1,
+.date {
+    font-size: 50px;
+    color: var(--white);
+    background-color: var(--light-gold);
+
+    padding: 10px 20px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+    box-shadow:
+        -6px -6px 10px rgba(255,255,255,0.35),
+        7px 7px 12px rgba(0,0,0,0.65),
+        inset 3px 3px 5px rgba(255,255,255,0.25),
+        inset -3px -3px 5px rgba(0,0,0,0.35);
+
+    border-radius: 0;
+}
+
+.date {
+    font-size: 35px;
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   DIGITAL CLOCK
+   ========================================= */
+
+.clock-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+.digital-clock {
+    font-family: Arial, sans-serif, monospace;
+
+    font-size: 80px;
+
+    color: var(--white);
+
+    background-color: var(--light-gold);
+
+    padding: 25px;
+
+    width: 600px;
+
+    text-align: center;
+
+    line-height: 1.1;
+
+    font-weight: bold;
+
+    position: relative;
+
+    border-radius: 0;
+
+    box-shadow:
+        -6px -6px 10px rgba(255,255,255,0.35),
+        7px 7px 12px rgba(0,0,0,0.65),
+        inset 3px 3px 5px rgba(255,255,255,0.25),
+        inset -3px -3px 5px rgba(0,0,0,0.35);
+
+    border: 5px solid var(--light-gold);
+}
+
+.current-time {
+    font-size: 20px;
+
+    color: var(--white);
+
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    margin: 0;
+}
+
+.ampm {
+    font-size: 80px;
+
+    color: var(--white);
+
+    margin-left: 10px;
+
+    display: inline;
+}
+
+
+/* =========================================
+   PRAYER TABLE
+   ========================================= */
+
+.prayer-time-table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    /*
+       Green background shows through
+       the gaps between the boxes.
+    */
+    border-spacing: 8px;
+
+    margin-top: 20px;
+
+    background-color: transparent;
+}
+
+
+/* =========================================
+   ALL PRAYER BOXES
+   ========================================= */
+
+.prayer-time-table th,
+.prayer-time-table td {
+
+    padding: 25px;
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    color: var(--henna-green);
+
+    text-align: center;
+
+    position: relative;
+
+    border-radius: 0;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        var(--box-blue) 50%,
+        var(--box-blue-dark) 100%
+    );
+
+    box-shadow:
+        -6px -6px 10px rgba(255,255,255,0.95),
+        7px 7px 12px rgba(0,0,0,0.45),
+        inset 3px 3px 5px rgba(255,255,255,0.85),
+        inset -3px -3px 5px rgba(0,0,0,0.15);
+
+    text-shadow:
+        1px 1px 0 #ffffff,
+        2px 2px 0 #3F5942,
+        3px 3px 3px rgba(0,0,0,0.30);
+}
+
+
+/* =========================================
+   TABLE HEADERS
+   ========================================= */
+
+.prayer-time-table th {
+
+    background: var(--light-gold);
+
+    color: var(--white);
+
+    padding: 10px;
+
+    box-shadow:
+        -6px -6px 10px rgba(255,255,255,0.30),
+        7px 7px 12px rgba(0,0,0,0.65),
+        inset 3px 3px 5px rgba(255,255,255,0.20),
+        inset -3px -3px 5px rgba(0,0,0,0.35);
+
+    text-shadow:
+        1px 1px 0 #9A833D,
+        2px 2px 0 #806D32,
+        3px 3px 3px rgba(0,0,0,0.55);
+}
+
+
+/* =========================================
+   IQAMAH BOXES
+   ========================================= */
+
+.prayer-time-table tbody td:nth-child(3) {
+
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        var(--box-blue) 50%,
+        var(--box-blue-dark) 100%
+    );
+
+    color: var(--henna-green);
+
+    box-shadow:
+        -6px -6px 10px rgba(255,255,255,0.95),
+        7px 7px 12px rgba(0,0,0,0.45),
+        inset 3px 3px 5px rgba(255,255,255,0.85),
+        inset -3px -3px 5px rgba(0,0,0,0.15);
+
+    text-shadow:
+        1px 1px 0 #ffffff,
+        2px 2px 0 #3F5942,
+        3px 3px 3px rgba(0,0,0,0.30);
+}
+
+
+/* =====================================================
+   ACTIVE PRAYER FONT
+   ===================================================== */
+
+/*
+   IMPORTANT:
+
+   Only the text inside .flash-text is animated.
+
+   The table row does NOT animate.
+   The table cell does NOT animate.
+   The box does NOT animate.
+   The background does NOT animate.
+*/
+
+.flash-text {
+
+    display: inline-block;
+
+    /*
+       This is critical.
+       It makes the text grow from its own center.
+    */
+    transform-origin: center center;
+
+    /*
+       7 second slow animation.
+    */
+    animation:
+        prayerFontPulse 7s ease-in-out infinite;
+
+    /*
+       3D dark-gold lettering.
+    */
+    text-shadow:
+        1px 1px 0 #fff3c4,
+        2px 2px 0 #b89432,
+        3px 3px 0 #8f7020,
+        4px 4px 5px rgba(0,0,0,0.40);
+
+    /*
+       Keep the animated text above
+       the surrounding content.
+    */
+    position: relative;
+
+    z-index: 5;
+
+    /*
+       Prevent the enlarged text from
+       being treated as a different box.
+    */
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   7-SECOND FONT ANIMATION
+   ===================================================== */
+
+@keyframes prayerFontPulse {
+
+    /*
+       0%
+       NORMAL SIZE
+       LIGHT GOLD
+    */
+    0% {
+
+        color: #D8B85A;
+
+        transform:
+            scale(1);
     }
 
-    .container {
-        margin: 50px auto;
-        max-width: 1200px;
+
+    /*
+       20%
+       110% SIZE
+    */
+    20% {
+
+        color: #D0AC45;
+
+        transform:
+            scale(1.10);
     }
 
 
-    /* =========================================
-       HEADING
-       ========================================= */
+    /*
+       40%
+       120% SIZE
+    */
+    40% {
 
-    .heading {
-        display: inline-block;
-        text-align: left;
-        margin-right: 30px;
+        color: #B99532;
+
+        transform:
+            scale(1.20);
     }
+
+
+    /*
+       50%
+       PEAK
+       EXACTLY 125% SIZE
+    */
+    50% {
+
+        color: #A98224;
+
+        transform:
+            scale(1.25);
+    }
+
+
+    /*
+       60%
+       HOLD AT 125%
+    */
+    60% {
+
+        color: #A98224;
+
+        transform:
+            scale(1.25);
+    }
+
+
+    /*
+       80%
+       RETURNING TO NORMAL
+    */
+    80% {
+
+        color: #C9A63F;
+
+        transform:
+            scale(1.10);
+    }
+
+
+    /*
+       100%
+       NORMAL SIZE
+       LIGHT GOLD
+    */
+    100% {
+
+        color: #D8B85A;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   LOGO
+   ========================================= */
+
+.logo {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    right: 20px;
+
+    padding: 10px;
+
+    width: 200px;
+
+    box-shadow:
+        -4px -4px 10px rgba(255,255,255,0.5),
+        4px 4px 20px rgba(0,0,0,1);
+
+    border-radius: 0;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
 
     h1,
-    .date {
-        font-size: 50px;
-        color: #e0f7fa;
-        background-color: #003366;
-        padding: 10px 20px;
-        font-weight: bold;
-        margin: 0;
-
-        box-shadow:
-            -6px -6px 10px rgba(255, 255, 255, 0.35),
-            7px 7px 12px rgba(0, 0, 0, 0.65),
-            inset 3px 3px 5px rgba(255, 255, 255, 0.18),
-            inset -3px -3px 5px rgba(0, 0, 0, 0.35);
-
-        border-radius: 0;
-    }
-
-    .date {
-        font-size: 35px;
-        margin-top: 5px;
-    }
-
-
-    /* =========================================
-       DIGITAL CLOCK
-       ========================================= */
-
-    .clock-container {
-        display: inline-block;
-        vertical-align: top;
-        margin-left: 30px;
-    }
-
-    .digital-clock {
-        font-family: Arial, sans-serif, monospace;
-        font-size: 80px;
-        color: #ffffff;
-        background-color: #003366;
-
-        padding: 25px;
-        width: 600px;
-
-        text-align: center;
-        line-height: 1.1;
-        font-weight: bold;
-
-        position: relative;
-
-        border-radius: 0;
-
-        box-shadow:
-            -6px -6px 10px rgba(255, 255, 255, 0.35),
-            7px 7px 12px rgba(0, 0, 0, 0.65),
-            inset 3px 3px 5px rgba(255, 255, 255, 0.18),
-            inset -3px -3px 5px rgba(0, 0, 0, 0.35);
-
-        border: 5px solid #003366;
-    }
-
-    .current-time {
-        font-size: 20px;
-        color: #ffffff;
-
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-
-        transform: translateX(-50%);
-        margin: 0;
-    }
-
-    .ampm {
-        font-size: 80px;
-        color: #ffffff;
-        margin-left: 10px;
-        display: inline;
-    }
-
-
-    /* =========================================
-       PRAYER TABLE
-       ========================================= */
-
-    .prayer-time-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 8px;
-        margin-top: 20px;
-
-        background-color: transparent;
-    }
-
-
-    /* =========================================
-       PRAYER BOXES
-       ========================================= */
-
+    .date,
     .prayer-time-table th,
     .prayer-time-table td {
 
-        padding: 25px;
-
-        font-size: 60px;
-        font-weight: bold;
-
-        color: #003366;
-
-        text-align: center;
-
-        position: relative;
-
-        border-radius: 0;
-
-        background: linear-gradient(
-            145deg,
-            #ffffff 0%,
-            #f0f8ff 50%,
-            #c5dceb 100%
-        );
-
-        box-shadow:
-            -6px -6px 10px rgba(255, 255, 255, 0.95),
-            7px 7px 12px rgba(0, 0, 0, 0.45),
-            inset 3px 3px 5px rgba(255, 255, 255, 0.85),
-            inset -3px -3px 5px rgba(0, 0, 0, 0.15);
-
-        text-shadow:
-            1px 1px 0 #ffffff,
-            2px 2px 0 #c0d0db,
-            3px 3px 3px rgba(0, 0, 0, 0.35);
+        font-size: 30px;
     }
 
 
-    /* =========================================
-       BLUE HEADER
-       ========================================= */
+    .digital-clock {
 
-    .prayer-time-table th {
+        font-size: 40px;
 
-        background: #003366;
-
-        color: white;
-
-        padding: 10px;
-
-        box-shadow:
-            -6px -6px 10px rgba(255, 255, 255, 0.25),
-            7px 7px 12px rgba(0, 0, 0, 0.65),
-            inset 3px 3px 5px rgba(255, 255, 255, 0.15),
-            inset -3px -3px 5px rgba(0, 0, 0, 0.35);
-
-        text-shadow:
-            1px 1px 0 #001f3d,
-            2px 2px 0 #00172d,
-            3px 3px 3px rgba(0, 0, 0, 0.6);
+        width: 380px;
     }
 
-
-    /* =========================================
-       IQAMAH BOXES
-       ========================================= */
-
-    .prayer-time-table tbody td:nth-child(3) {
-
-        background: linear-gradient(
-            145deg,
-            #ffffff 0%,
-            #f0f8ff 50%,
-            #c5dceb 100%
-        );
-
-        border-radius: 0;
-
-        box-shadow:
-            -6px -6px 10px rgba(255, 255, 255, 0.95),
-            7px 7px 12px rgba(0, 0, 0, 0.45),
-            inset 3px 3px 5px rgba(255, 255, 255, 0.85),
-            inset -3px -3px 5px rgba(0, 0, 0, 0.15);
-
-        text-shadow:
-            1px 1px 0 #ffffff,
-            2px 2px 0 #c0d0db,
-            3px 3px 3px rgba(0, 0, 0, 0.35);
-    }
-
-
-    /* =========================================
-       NEXT PRAYER - MAROON
-       ========================================= */
-
-    .next-prayer {
-        color: #8B0000 !important;
-
-        text-shadow:
-            1px 1px 0 #ffffff,
-            2px 2px 0 #d8b0b0,
-            3px 3px 3px rgba(0, 0, 0, 0.35) !important;
-    }
-
-
-    /* =========================================
-       LOGO
-       ========================================= */
-
-    .logo {
-        position: absolute;
-
-        bottom: 20px;
-        right: 20px;
-
-        padding: 10px;
-
-        width: 200px;
-
-        box-shadow:
-            -4px -4px 10px rgba(255, 255, 255, 0.5),
-            4px 4px 20px rgba(0, 0, 0, 1);
-
-        border-radius: 0;
-    }
-
-
-    /* =========================================
-       MOBILE
-       ========================================= */
-
-    @media (max-width: 768px) {
-
-        h1,
-        .date,
-        .prayer-time-table th,
-        .prayer-time-table td {
-            font-size: 30px;
-        }
-
-        .digital-clock {
-            font-size: 40px;
-            width: 380px;
-        }
-    }
+}
 
 </style>
 
@@ -288,15 +481,21 @@
 
 ```
 <!-- =====================================
-     HEADING
+     TITLE
      ===================================== -->
 
 <div class="heading">
 
-    <h1>Prayer Times</h1>
+    <h1>
+        Prayer Times
+    </h1>
 
     <div class="date">
-        <span id="current-date">Loading...</span>
+
+        <span id="current-date">
+            Loading...
+        </span>
+
     </div>
 
 </div>
@@ -308,9 +507,11 @@
 
 <div class="clock-container">
 
-    <div class="digital-clock" id="digital-clock">
+    <div class="digital-clock">
 
-        <span id="time">00:00:00</span>
+        <span id="time">
+            00:00:00
+        </span>
 
         <span class="ampm" id="ampm">
             AM
@@ -334,15 +535,28 @@
     <thead>
 
         <tr>
+
             <th colspan="3">
                 Bay County Islamic Society
             </th>
+
         </tr>
 
+
         <tr>
-            <th>Prayer</th>
-            <th>Time</th>
-            <th>Iqamah</th>
+
+            <th>
+                Prayer
+            </th>
+
+            <th>
+                Time
+            </th>
+
+            <th>
+                Iqamah
+            </th>
+
         </tr>
 
     </thead>
@@ -350,35 +564,91 @@
 
     <tbody id="prayer-times">
 
+
         <tr id="fajr-row">
-            <td>Fajr</td>
-            <td id="fajr-time">Loading...</td>
-            <td id="fajr-iqamah">Loading...</td>
+
+            <td>
+                Fajr
+            </td>
+
+            <td id="fajr-time">
+                Loading...
+            </td>
+
+            <td id="fajr-iqamah">
+                Loading...
+            </td>
+
         </tr>
+
 
         <tr id="zuhr-row">
-            <td>Zuhr</td>
-            <td id="zuhr-time">Loading...</td>
-            <td id="zuhr-iqamah">Loading...</td>
+
+            <td>
+                Zuhr
+            </td>
+
+            <td id="zuhr-time">
+                Loading...
+            </td>
+
+            <td id="zuhr-iqamah">
+                Loading...
+            </td>
+
         </tr>
+
 
         <tr id="asr-row">
-            <td>Asr</td>
-            <td id="asr-time">Loading...</td>
-            <td id="asr-iqamah">Loading...</td>
+
+            <td>
+                Asr
+            </td>
+
+            <td id="asr-time">
+                Loading...
+            </td>
+
+            <td id="asr-iqamah">
+                Loading...
+            </td>
+
         </tr>
+
 
         <tr id="maghrib-row">
-            <td>Maghrib</td>
-            <td id="maghrib-time">Loading...</td>
-            <td id="maghrib-iqamah">Loading...</td>
+
+            <td>
+                Maghrib
+            </td>
+
+            <td id="maghrib-time">
+                Loading...
+            </td>
+
+            <td id="maghrib-iqamah">
+                Loading...
+            </td>
+
         </tr>
 
+
         <tr id="isha-row">
-            <td>Isha</td>
-            <td id="isha-time">Loading...</td>
-            <td id="isha-iqamah">Loading...</td>
+
+            <td>
+                Isha
+            </td>
+
+            <td id="isha-time">
+                Loading...
+            </td>
+
+            <td id="isha-iqamah">
+                Loading...
+            </td>
+
         </tr>
+
 
     </tbody>
 
@@ -387,361 +657,581 @@
 
 </div>
 
-<img src="logo.png" alt="Logo" class="logo">
+<!-- =====================================
+     LOGO
+     ===================================== -->
+
+<img
+src="logo.png"
+alt="Logo"
+class="logo"
+
+>
 
 <script>
 
-    /* =========================================
-       STORE PRAYER TIMES
-       ========================================= */
 
-    let prayerTimes = {};
+/* =========================================
+   PRAYER DATA
+   ========================================= */
+
+let prayerTimes = {};
 
 
-    /* =========================================
-       CONVERT 12-HOUR TIME TO MINUTES
-       ========================================= */
+/* =========================================
+   CONVERT 12-HOUR TIME TO MINUTES
+   ========================================= */
 
-    function convertToMinutes(timeString) {
+function convertToMinutes(timeString) {
 
-        if (!timeString) {
-            return null;
-        }
+    if (!timeString) {
+        return null;
+    }
 
-        timeString = timeString.trim();
 
-        /*
-         * Handles:
-         * 5:30 AM
-         * 12:45 PM
-         * 5:30AM
-         * 12:45PM
-         */
+    timeString =
+        timeString.trim();
 
-        const match = timeString.match(
+
+    const match =
+        timeString.match(
             /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
         );
 
-        if (!match) {
-            return null;
-        }
 
-        let hours = parseInt(match[1], 10);
-        const minutes = parseInt(match[2], 10);
-        const period = match[3].toUpperCase();
-
-        if (period === "AM") {
-
-            if (hours === 12) {
-                hours = 0;
-            }
-
-        } else {
-
-            if (hours !== 12) {
-                hours += 12;
-            }
-        }
-
-        return (hours * 60) + minutes;
+    if (!match) {
+        return null;
     }
 
 
-    /* =========================================
-       FIND NEXT PRAYER
-       ========================================= */
-
-    function highlightNextPrayer() {
-
-        const now = new Date();
-
-        const currentMinutes =
-            (now.getHours() * 60) + now.getMinutes();
+    let hours =
+        parseInt(
+            match[1],
+            10
+        );
 
 
-        const prayers = [
-            {
-                name: "fajr",
-                time: prayerTimes.fajr
-            },
-            {
-                name: "zuhr",
-                time: prayerTimes.zuhr
-            },
-            {
-                name: "asr",
-                time: prayerTimes.asr
-            },
-            {
-                name: "maghrib",
-                time: prayerTimes.maghrib
-            },
-            {
-                name: "isha",
-                time: prayerTimes.isha
-            }
-        ];
+    const minutes =
+        parseInt(
+            match[2],
+            10
+        );
 
 
-        let nextPrayer = null;
+    const period =
+        match[3].toUpperCase();
 
 
-        /* =====================================
-           FIND FIRST PRAYER AFTER CURRENT TIME
-           ===================================== */
+    if (period === "AM") {
 
-        for (const prayer of prayers) {
-
-            const prayerMinutes =
-                convertToMinutes(prayer.time);
-
-            if (
-                prayerMinutes !== null &&
-                prayerMinutes > currentMinutes
-            ) {
-
-                nextPrayer = prayer.name;
-                break;
-            }
+        if (hours === 12) {
+            hours = 0;
         }
 
+    } else {
 
-        /* =====================================
-           IF AFTER ISHA, NEXT IS FAJR
-           ===================================== */
-
-        if (!nextPrayer) {
-            nextPrayer = "fajr";
-        }
-
-
-        /* =====================================
-           REMOVE OLD HIGHLIGHTS
-           ===================================== */
-
-        document
-            .querySelectorAll(".next-prayer")
-            .forEach(element => {
-                element.classList.remove("next-prayer");
-            });
-
-
-        /* =====================================
-           HIGHLIGHT NEXT PRAYER
-           ===================================== */
-
-        const row =
-            document.getElementById(
-                nextPrayer + "-row"
-            );
-
-
-        if (row) {
-
-            row
-                .querySelectorAll("td")
-                .forEach(cell => {
-                    cell.classList.add("next-prayer");
-                });
-
+        if (hours !== 12) {
+            hours += 12;
         }
 
     }
 
 
-    /* =========================================
-       FETCH PRAYER TIMES
-       ========================================= */
-
-    async function fetchPrayerTimes() {
-
-        try {
-
-            const response = await fetch(
-                'https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ'
-            );
-
-            const data = await response.json();
-
-            const salah =
-                data.data.salah[0];
-
-            const iqamah =
-                data.data.iqamah[0];
+    return (
+        hours * 60
+    ) + minutes;
+}
 
 
-            /* =================================
-               DATE
-               ================================= */
+/* =========================================
+   SET TEXT
+   ========================================= */
 
-            document.getElementById(
-                'current-date'
-            ).textContent = salah.date;
+function setText(id, text) {
 
-
-            /* =================================
-               STORE TIMES
-               ================================= */
-
-            prayerTimes = {
-
-                fajr: salah.fajr,
-
-                zuhr: salah.zuhr,
-
-                asr: salah.asr,
-
-                maghrib: salah.maghrib,
-
-                isha: salah.isha
-
-            };
+    const element =
+        document.getElementById(id);
 
 
-            /* =================================
-               DISPLAY PRAYER TIMES
-               ================================= */
+    if (element) {
 
-            document.getElementById(
-                'fajr-time'
-            ).textContent = salah.fajr;
-
-            document.getElementById(
-                'fajr-iqamah'
-            ).textContent = iqamah.fajr;
-
-
-            document.getElementById(
-                'zuhr-time'
-            ).textContent = salah.zuhr;
-
-            document.getElementById(
-                'zuhr-iqamah'
-            ).textContent = iqamah.zuhr;
-
-
-            document.getElementById(
-                'asr-time'
-            ).textContent = salah.asr;
-
-            document.getElementById(
-                'asr-iqamah'
-            ).textContent = iqamah.asr;
-
-
-            document.getElementById(
-                'maghrib-time'
-            ).textContent = salah.maghrib;
-
-            document.getElementById(
-                'maghrib-iqamah'
-            ).textContent = iqamah.maghrib;
-
-
-            document.getElementById(
-                'isha-time'
-            ).textContent = salah.isha;
-
-            document.getElementById(
-                'isha-iqamah'
-            ).textContent = iqamah.isha;
-
-
-            /* =================================
-               HIGHLIGHT NEXT PRAYER
-               ================================= */
-
-            highlightNextPrayer();
-
-        } catch (error) {
-
-            console.error(
-                "Unable to load prayer times:",
-                error
-            );
-
-        }
+        element.textContent =
+            text;
 
     }
 
-
-    /* =========================================
-       DIGITAL CLOCK
-       ========================================= */
-
-    function updateClock() {
-
-        const now = new Date();
-
-        const hours =
-            now.getHours();
-
-        const minutes =
-            String(
-                now.getMinutes()
-            ).padStart(2, '0');
-
-        const seconds =
-            String(
-                now.getSeconds()
-            ).padStart(2, '0');
+}
 
 
-        const ampm =
-            hours >= 12
-                ? 'PM'
-                : 'AM';
+/* =========================================
+   FLASH ONLY THE FONT
+   ========================================= */
+
+function setFlash(rowId, flash) {
+
+    const row =
+        document.getElementById(rowId);
 
 
-        const formattedHours =
-            hours % 12 || 12;
+    if (!row) {
+        return;
+    }
 
 
-        document.getElementById(
-            'time'
-        ).textContent =
-            `${formattedHours}:${minutes}:${seconds}`;
+    const cells =
+        row.querySelectorAll("td");
 
 
-        document.getElementById(
-            'ampm'
-        ).textContent =
-            ampm;
+    cells.forEach(cell => {
+
+
+        let span =
+            cell.querySelector(
+                ".flash-text"
+            );
 
 
         /*
-         * Check every second so the maroon
-         * highlight changes automatically
-         * exactly when the next prayer arrives.
-         */
+           Create the text span
+           only once.
+        */
+
+        if (!span) {
+
+            const text =
+                cell.textContent;
+
+
+            cell.textContent =
+                "";
+
+
+            span =
+                document.createElement(
+                    "span"
+                );
+
+
+            span.textContent =
+                text;
+
+
+            span.className =
+                "prayer-text";
+
+
+            cell.appendChild(
+                span
+            );
+
+        }
+
+
+        if (flash) {
+
+            span.classList.add(
+                "flash-text"
+            );
+
+        } else {
+
+            span.classList.remove(
+                "flash-text"
+            );
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   FIND CURRENT/NEXT PRAYER
+   ========================================= */
+
+function highlightNextPrayer() {
+
+    if (!prayerTimes.fajrIqamah) {
+        return;
+    }
+
+
+    const now =
+        new Date();
+
+
+    const currentMinutes =
+        (
+            now.getHours() * 60
+        ) +
+        now.getMinutes();
+
+
+    const prayers = [
+
+        {
+            row: "fajr-row",
+            iqamah: prayerTimes.fajrIqamah
+        },
+
+        {
+            row: "zuhr-row",
+            iqamah: prayerTimes.zuhrIqamah
+        },
+
+        {
+            row: "asr-row",
+            iqamah: prayerTimes.asrIqamah
+        },
+
+        {
+            row: "maghrib-row",
+            iqamah: prayerTimes.maghribIqamah
+        },
+
+        {
+            row: "isha-row",
+            iqamah: prayerTimes.ishaIqamah
+        }
+
+    ];
+
+
+    let activePrayer =
+        null;
+
+
+    /*
+       Highlight the prayer until
+       10 minutes after Iqamah.
+    */
+
+    for (
+        const prayer
+        of prayers
+    ) {
+
+        const iqamahMinutes =
+            convertToMinutes(
+                prayer.iqamah
+            );
+
+
+        if (
+            iqamahMinutes === null
+        ) {
+            continue;
+        }
+
+
+        const highlightUntil =
+            iqamahMinutes + 10;
+
+
+        if (
+            currentMinutes <
+            highlightUntil
+        ) {
+
+            activePrayer =
+                prayer.row;
+
+            break;
+        }
+
+    }
+
+
+    /*
+       If all prayers have passed,
+       use Fajr for the next cycle.
+    */
+
+    if (!activePrayer) {
+
+        activePrayer =
+            "fajr-row";
+
+    }
+
+
+    /*
+       Turn OFF animation
+       for every prayer.
+    */
+
+    prayers.forEach(
+        prayer => {
+
+            setFlash(
+                prayer.row,
+                false
+            );
+
+        }
+    );
+
+
+    /*
+       Turn ON animation
+       only for the active prayer.
+    */
+
+    setFlash(
+        activePrayer,
+        true
+    );
+
+}
+
+
+/* =========================================
+   FETCH PRAYER TIMES
+   ========================================= */
+
+async function fetchPrayerTimes() {
+
+    try {
+
+        const response =
+            await fetch(
+                "https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        const salah =
+            data.data.salah[0];
+
+
+        const iqamah =
+            data.data.iqamah[0];
+
+
+        /*
+           DATE
+        */
+
+        setText(
+            "current-date",
+            salah.date
+        );
+
+
+        /*
+           SAVE IQAMAH TIMES
+        */
+
+        prayerTimes = {
+
+            fajrIqamah:
+                iqamah.fajr,
+
+            zuhrIqamah:
+                iqamah.zuhr,
+
+            asrIqamah:
+                iqamah.asr,
+
+            maghribIqamah:
+                iqamah.maghrib,
+
+            ishaIqamah:
+                iqamah.isha
+
+        };
+
+
+        /*
+           FAJR
+        */
+
+        setText(
+            "fajr-time",
+            salah.fajr
+        );
+
+        setText(
+            "fajr-iqamah",
+            iqamah.fajr
+        );
+
+
+        /*
+           ZUHR
+        */
+
+        setText(
+            "zuhr-time",
+            salah.zuhr
+        );
+
+        setText(
+            "zuhr-iqamah",
+            iqamah.zuhr
+        );
+
+
+        /*
+           ASR
+        */
+
+        setText(
+            "asr-time",
+            salah.asr
+        );
+
+        setText(
+            "asr-iqamah",
+            iqamah.asr
+        );
+
+
+        /*
+           MAGHRIB
+        */
+
+        setText(
+            "maghrib-time",
+            salah.maghrib
+        );
+
+        setText(
+            "maghrib-iqamah",
+            iqamah.maghrib
+        );
+
+
+        /*
+           ISHA
+        */
+
+        setText(
+            "isha-time",
+            salah.isha
+        );
+
+        setText(
+            "isha-iqamah",
+            iqamah.isha
+        );
+
+
+        /*
+           START ACTIVE PRAYER
+        */
 
         highlightNextPrayer();
 
     }
 
 
-    /* =========================================
-       START
-       ========================================= */
+    catch (error) {
 
-    fetchPrayerTimes();
+        console.error(
+            "Unable to load prayer times:",
+            error
+        );
 
-    updateClock();
+    }
 
-    setInterval(
-        updateClock,
-        1000
+}
+
+
+/* =========================================
+   DIGITAL CLOCK
+   ========================================= */
+
+function updateClock() {
+
+    const now =
+        new Date();
+
+
+    const hours =
+        now.getHours();
+
+
+    const minutes =
+        String(
+            now.getMinutes()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const seconds =
+        String(
+            now.getSeconds()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const ampm =
+        hours >= 12
+            ? "PM"
+            : "AM";
+
+
+    const formattedHours =
+        hours % 12 || 12;
+
+
+    setText(
+        "time",
+        `${formattedHours}:${minutes}:${seconds}`
+    );
+
+
+    setText(
+        "ampm",
+        ampm
     );
 
 
     /*
-     * Refresh prayer times every 24 hours
-     */
+       Recheck active prayer.
+    */
 
-    setInterval(
-        fetchPrayerTimes,
-        24 * 60 * 60 * 1000
-    );
+    highlightNextPrayer();
+
+}
+
+
+/* =========================================
+   START
+   ========================================= */
+
+fetchPrayerTimes();
+
+updateClock();
+
+
+/*
+   Update clock every second.
+*/
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/*
+   Refresh prayer times every 24 hours.
+*/
+
+setInterval(
+    fetchPrayerTimes,
+    24 * 60 * 60 * 1000
+);
 
 </script>
 
