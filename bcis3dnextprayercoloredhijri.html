@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prayer Times</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prayer Times</title>
 
 <style>
 
+/* =====================================================
+   COLORS
+   ===================================================== */
+
 :root {
+
     --henna-green: #4F6F52;
 
     --light-gold: #D8B85A;
@@ -22,43 +30,56 @@
 }
 
 
-/* ================================
+/* =====================================================
    BODY
-   ================================ */
+   ===================================================== */
 
 body {
+
     font-family: Arial, sans-serif;
+
     background-color: var(--henna-green);
+
     margin: 0;
     padding: 0;
+
     text-align: center;
 }
 
 
-/* ================================
-   CONTAINER
-   ================================ */
+/* =====================================================
+   MAIN CONTAINER
+   ===================================================== */
 
 .container {
+
     margin: 50px auto;
+
     max-width: 1200px;
 }
 
 
-/* ================================
-   TITLE / DATE
-   ================================ */
+/* =====================================================
+   HEADING
+   ===================================================== */
 
 .heading {
+
     display: inline-block;
+
     text-align: left;
+
     margin-right: 30px;
 }
 
+
 h1,
 .date {
+
     font-size: 50px;
+
     color: var(--white);
+
     background-color: var(--light-gold);
 
     padding: 10px 20px;
@@ -68,29 +89,40 @@ h1,
     margin: 0;
 
     box-shadow:
+
         -6px -6px 10px rgba(255,255,255,0.35),
+
         7px 7px 12px rgba(0,0,0,0.65),
+
         inset 3px 3px 5px rgba(255,255,255,0.25),
+
         inset -3px -3px 5px rgba(0,0,0,0.35);
 
     border-radius: 0;
 }
 
+
 .date {
+
     font-size: 35px;
+
     margin-top: 5px;
 }
 
 
-/* ================================
-   HIJRI / RAMADAN BOX
-   ================================ */
+/* =====================================================
+   HIJRI DATE BOX
+   ===================================================== */
 
 .clock-container {
+
     display: inline-block;
+
     vertical-align: top;
+
     margin-left: 30px;
 }
+
 
 .digital-clock {
 
@@ -115,9 +147,13 @@ h1,
     border-radius: 0;
 
     box-shadow:
+
         -6px -6px 10px rgba(255,255,255,0.35),
+
         7px 7px 12px rgba(0,0,0,0.65),
+
         inset 3px 3px 5px rgba(255,255,255,0.25),
+
         inset -3px -3px 5px rgba(0,0,0,0.35);
 
     border: 5px solid var(--light-gold);
@@ -126,7 +162,9 @@ h1,
 }
 
 
-/* Main Hijri date */
+/* =====================================================
+   HIJRI DATE
+   ===================================================== */
 
 #hijri-date {
 
@@ -139,13 +177,18 @@ h1,
     color: var(--white);
 
     text-shadow:
+
         1px 1px 0 #9A833D,
+
         2px 2px 0 #806D32,
+
         3px 3px 4px rgba(0,0,0,0.55);
 }
 
 
-/* Ramadan information */
+/* =====================================================
+   RAMADAN INFORMATION
+   ===================================================== */
 
 #ramadan-info {
 
@@ -160,17 +203,21 @@ h1,
     color: var(--white);
 
     text-shadow:
+
         1px 1px 0 #9A833D,
+
         2px 2px 0 #806D32,
+
         3px 3px 4px rgba(0,0,0,0.45);
 }
 
 
-/* ================================
+/* =====================================================
    PRAYER TABLE
-   ================================ */
+   ===================================================== */
 
 .prayer-time-table {
+
     width: 100%;
 
     border-collapse: separate;
@@ -183,9 +230,9 @@ h1,
 }
 
 
-/* ================================
+/* =====================================================
    PRAYER BOXES
-   ================================ */
+   ===================================================== */
 
 .prayer-time-table th,
 .prayer-time-table td {
@@ -204,29 +251,43 @@ h1,
 
     border-radius: 0;
 
-    background: linear-gradient(
-        145deg,
-        #ffffff 0%,
-        var(--box-blue) 50%,
-        var(--box-blue-dark) 100%
-    );
+    background:
+
+        linear-gradient(
+
+            145deg,
+
+            #ffffff 0%,
+
+            var(--box-blue) 50%,
+
+            var(--box-blue-dark) 100%
+
+        );
 
     box-shadow:
+
         -6px -6px 10px rgba(255,255,255,0.95),
+
         7px 7px 12px rgba(0,0,0,0.45),
+
         inset 3px 3px 5px rgba(255,255,255,0.85),
+
         inset -3px -3px 5px rgba(0,0,0,0.15);
 
     text-shadow:
+
         1px 1px 0 #ffffff,
+
         2px 2px 0 #3F5942,
+
         3px 3px 3px rgba(0,0,0,0.30);
 }
 
 
-/* ================================
+/* =====================================================
    TABLE HEADERS
-   ================================ */
+   ===================================================== */
 
 .prayer-time-table th {
 
@@ -237,49 +298,72 @@ h1,
     padding: 10px;
 
     box-shadow:
+
         -6px -6px 10px rgba(255,255,255,0.30),
+
         7px 7px 12px rgba(0,0,0,0.65),
+
         inset 3px 3px 5px rgba(255,255,255,0.20),
+
         inset -3px -3px 5px rgba(0,0,0,0.35);
 
     text-shadow:
+
         1px 1px 0 #9A833D,
+
         2px 2px 0 #806D32,
+
         3px 3px 3px rgba(0,0,0,0.55);
 }
 
 
-/* ================================
+/* =====================================================
    IQAMAH BOXES
-   ================================ */
+   ===================================================== */
 
 .prayer-time-table tbody td:nth-child(3) {
 
-    background: linear-gradient(
-        145deg,
-        #ffffff 0%,
-        var(--box-blue) 50%,
-        var(--box-blue-dark) 100%
-    );
+    background:
+
+        linear-gradient(
+
+            145deg,
+
+            #ffffff 0%,
+
+            var(--box-blue) 50%,
+
+            var(--box-blue-dark) 100%
+
+        );
 
     color: var(--henna-green);
 
     box-shadow:
+
         -6px -6px 10px rgba(255,255,255,0.95),
+
         7px 7px 12px rgba(0,0,0,0.45),
+
         inset 3px 3px 5px rgba(255,255,255,0.85),
+
         inset -3px -3px 5px rgba(0,0,0,0.15);
 
     text-shadow:
+
         1px 1px 0 #ffffff,
+
         2px 2px 0 #3F5942,
+
         3px 3px 3px rgba(0,0,0,0.30);
 }
 
 
 /* =====================================================
-   ACTIVE PRAYER
-   ONLY THE FONT ANIMATES
+   IMPORTANT:
+   ONLY THE TEXT FLASHES.
+   
+   THE ROW AND BOX DO NOT FLASH.
    ===================================================== */
 
 .flash-text {
@@ -288,84 +372,115 @@ h1,
 
     transform-origin: center center;
 
-    animation:
-        prayerFontPulse 6s ease-in-out infinite;
-
     position: relative;
 
     z-index: 5;
 
     white-space: nowrap;
 
+    animation:
+
+        prayerFontPulse 4.5s ease-in-out infinite;
+
     text-shadow:
+
         1px 1px 0 #fff3c4,
+
         2px 2px 0 #b89432,
+
         3px 3px 0 #8f7020,
+
         4px 4px 5px rgba(0,0,0,0.40);
 }
 
 
 /* =====================================================
-   SMOOTH 125% FONT PULSE
+   SMOOTH FONT FLASH
+   
+   LOW POINT = 112.5%
+   PEAK     = 125%
+   
+   It NEVER returns to normal 100%.
    ===================================================== */
 
 @keyframes prayerFontPulse {
 
     0% {
+
         color: #D8B85A;
-        transform: scale(1);
+
+        transform: scale(1.125);
     }
+
 
     15% {
+
         color: #D5B250;
-        transform: scale(1.04);
+
+        transform: scale(1.15);
     }
+
 
     30% {
+
         color: #CDAA45;
-        transform: scale(1.10);
+
+        transform: scale(1.19);
     }
+
 
     42% {
+
         color: #BD9A36;
-        transform: scale(1.18);
+
+        transform: scale(1.23);
     }
+
 
     50% {
+
         color: #A98224;
+
         transform: scale(1.25);
     }
 
-    55% {
-        color: #A98224;
-        transform: scale(1.25);
-    }
 
-    68% {
+    58% {
+
         color: #BD9A36;
-        transform: scale(1.18);
+
+        transform: scale(1.23);
     }
 
-    80% {
+
+    70% {
+
         color: #CDAA45;
-        transform: scale(1.10);
+
+        transform: scale(1.19);
     }
 
-    90% {
+
+    85% {
+
         color: #D5B250;
-        transform: scale(1.04);
+
+        transform: scale(1.15);
     }
+
 
     100% {
+
         color: #D8B85A;
-        transform: scale(1);
+
+        transform: scale(1.125);
     }
 }
 
 
-/* ================================
+/* =====================================================
    LOGO
-   ================================ */
+   ===================================================== */
 
 .logo {
 
@@ -380,16 +495,18 @@ h1,
     width: 200px;
 
     box-shadow:
+
         -4px -4px 10px rgba(255,255,255,0.5),
+
         4px 4px 20px rgba(0,0,0,1);
 
     border-radius: 0;
 }
 
 
-/* ================================
+/* =====================================================
    MOBILE
-   ================================ */
+   ===================================================== */
 
 @media (max-width: 768px) {
 
@@ -397,21 +514,30 @@ h1,
     .date,
     .prayer-time-table th,
     .prayer-time-table td {
+
         font-size: 30px;
     }
 
+
     .digital-clock {
+
         width: 380px;
+
         min-height: 120px;
     }
 
+
     #hijri-date {
+
         font-size: 34px;
     }
 
+
     #ramadan-info {
+
         font-size: 24px;
     }
+
 }
 
 </style>
@@ -423,13 +549,16 @@ h1,
 <div class="container">
 
 ```
-<!-- TITLE -->
+<!-- =========================================
+     TITLE AND DATE
+     ========================================= -->
 
 <div class="heading">
 
     <h1>
         Prayer Times
     </h1>
+
 
     <div class="date">
 
@@ -442,7 +571,9 @@ h1,
 </div>
 
 
-<!-- HIJRI DATE / RAMADAN BOX -->
+<!-- =========================================
+     HIJRI / RAMADAN BOX
+     ========================================= -->
 
 <div class="clock-container">
 
@@ -451,6 +582,7 @@ h1,
         <span id="hijri-date">
             Loading Hijri Date...
         </span>
+
 
         <span id="ramadan-info">
             Loading Ramadan information...
@@ -461,19 +593,26 @@ h1,
 </div>
 
 
-<!-- PRAYER TABLE -->
+<!-- =========================================
+     PRAYER TABLE
+     ========================================= -->
 
 <table class="prayer-time-table">
 
+
     <thead>
+
 
         <tr>
 
             <th colspan="3">
+
                 Bay County Islamic Society
+
             </th>
 
         </tr>
+
 
         <tr>
 
@@ -481,15 +620,18 @@ h1,
                 Prayer
             </th>
 
+
             <th>
                 Time
             </th>
+
 
             <th>
                 Iqamah
             </th>
 
         </tr>
+
 
     </thead>
 
@@ -499,7 +641,9 @@ h1,
 
         <tr id="fajr-row">
 
-            <td>Fajr</td>
+            <td>
+                Fajr
+            </td>
 
             <td id="fajr-time">
                 Loading...
@@ -514,7 +658,9 @@ h1,
 
         <tr id="zuhr-row">
 
-            <td>Zuhr</td>
+            <td>
+                Zuhr
+            </td>
 
             <td id="zuhr-time">
                 Loading...
@@ -529,7 +675,9 @@ h1,
 
         <tr id="asr-row">
 
-            <td>Asr</td>
+            <td>
+                Asr
+            </td>
 
             <td id="asr-time">
                 Loading...
@@ -544,7 +692,9 @@ h1,
 
         <tr id="maghrib-row">
 
-            <td>Maghrib</td>
+            <td>
+                Maghrib
+            </td>
 
             <td id="maghrib-time">
                 Loading...
@@ -559,7 +709,9 @@ h1,
 
         <tr id="isha-row">
 
-            <td>Isha</td>
+            <td>
+                Isha
+            </td>
 
             <td id="isha-time">
                 Loading...
@@ -579,7 +731,9 @@ h1,
 
 </div>
 
-<!-- LOGO -->
+<!-- =========================================
+     LOGO
+     ========================================= -->
 
 <img
 src="logo.png"
@@ -591,90 +745,126 @@ class="logo"
 <script>
 
 
-/* =========================================
+/* =====================================================
    PRAYER DATA
-   ========================================= */
+   ===================================================== */
 
 let prayerTimes = {};
 
 
-/* =========================================
+/* =====================================================
    HIJRI DATE
-   ========================================= */
+   ===================================================== */
 
 function getHijriDate(date = new Date()) {
 
     try {
 
         const formatter =
+
             new Intl.DateTimeFormat(
+
                 "en-US-u-ca-islamic-umalqura",
+
                 {
+
                     day: "numeric",
+
                     month: "long",
+
                     year: "numeric"
+
                 }
+
             );
+
 
         return formatter.format(date);
 
-    } catch (error) {
+    }
 
-        /*
-           Fallback if the browser does not
-           support islamic-umalqura.
-        */
+    catch (error) {
 
         const formatter =
+
             new Intl.DateTimeFormat(
+
                 "en-US-u-ca-islamic",
+
                 {
+
                     day: "numeric",
+
                     month: "long",
+
                     year: "numeric"
+
                 }
+
             );
+
 
         return formatter.format(date);
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    GET HIJRI PARTS
-   ========================================= */
+   ===================================================== */
 
 function getHijriParts(date = new Date()) {
 
     let formatter;
 
+
     try {
 
         formatter =
+
             new Intl.DateTimeFormat(
+
                 "en-US-u-ca-islamic-umalqura",
+
                 {
+
                     day: "numeric",
+
                     month: "numeric",
+
                     year: "numeric"
+
                 }
+
             );
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         formatter =
+
             new Intl.DateTimeFormat(
+
                 "en-US-u-ca-islamic",
+
                 {
+
                     day: "numeric",
+
                     month: "numeric",
+
                     year: "numeric"
+
                 }
+
             );
     }
 
 
     const parts =
+
         formatter.formatToParts(date);
 
 
@@ -684,15 +874,23 @@ function getHijriParts(date = new Date()) {
     parts.forEach(part => {
 
         if (
+
             part.type === "day" ||
+
             part.type === "month" ||
+
             part.type === "year"
+
         ) {
 
             result[part.type] =
+
                 parseInt(
+
                     part.value,
+
                     10
+
                 );
         }
 
@@ -703,51 +901,51 @@ function getHijriParts(date = new Date()) {
 }
 
 
-/* =========================================
+/* =====================================================
    FIND NEXT RAMADAN
-   ========================================= */
+   ===================================================== */
 
 function findNextRamadan() {
 
     const today =
+
         new Date();
 
 
-    /*
-       Start at today's date.
-    */
-
     const testDate =
+
         new Date(
+
             today.getFullYear(),
+
             today.getMonth(),
+
             today.getDate()
+
         );
 
 
-    /*
-       Search up to approximately
-       two Hijri years.
-    */
-
     for (
+
         let i = 0;
+
         i < 430;
+
         i++
+
     ) {
 
         const hijri =
+
             getHijriParts(testDate);
 
 
-        /*
-           Hijri month 9 = Ramadan
-           Day 1 = first day of Ramadan.
-        */
-
         if (
+
             hijri.month === 9 &&
+
             hijri.day === 1
+
         ) {
 
             return new Date(testDate);
@@ -755,8 +953,11 @@ function findNextRamadan() {
 
 
         testDate.setDate(
+
             testDate.getDate() + 1
+
         );
+
     }
 
 
@@ -764,234 +965,318 @@ function findNextRamadan() {
 }
 
 
-/* =========================================
-   RAMADAN INFORMATION
-   ========================================= */
+/* =====================================================
+   UPDATE RAMADAN INFORMATION
+   ===================================================== */
 
 function updateRamadanInfo() {
 
     const today =
+
         new Date();
 
 
     const hijri =
+
         getHijriParts(today);
 
 
     const hijriDate =
+
         getHijriDate(today);
 
 
-    /*
-       Show today's Hijri date.
-    */
-
     document.getElementById(
+
         "hijri-date"
+
     ).textContent =
+
         hijriDate + " AH";
 
 
     /*
-       We are currently in Ramadan.
+       Ramadan is Hijri month 9.
     */
 
     if (
+
         hijri.month === 9
+
     ) {
 
         document.getElementById(
+
             "ramadan-info"
+
         ).textContent =
+
             "🌙 Ramadan Day " +
+
             hijri.day;
+
 
         return;
     }
 
 
-    /*
-       Find next Ramadan.
-    */
-
     const nextRamadan =
+
         findNextRamadan();
 
 
     if (!nextRamadan) {
 
         document.getElementById(
+
             "ramadan-info"
+
         ).textContent =
+
             "🌙 Ramadan";
 
         return;
     }
 
 
-    /*
-       Calculate whole days remaining.
-    */
-
     const todayStart =
+
         new Date(
+
             today.getFullYear(),
+
             today.getMonth(),
+
             today.getDate()
+
         );
 
 
     const ramadanStart =
+
         new Date(
+
             nextRamadan.getFullYear(),
+
             nextRamadan.getMonth(),
+
             nextRamadan.getDate()
+
         );
 
 
     const difference =
+
         ramadanStart -
+
         todayStart;
 
 
     const daysRemaining =
+
         Math.ceil(
+
             difference /
+
             (1000 * 60 * 60 * 24)
+
         );
 
 
-    if (daysRemaining === 1) {
+    if (
+
+        daysRemaining === 1
+
+    ) {
 
         document.getElementById(
+
             "ramadan-info"
+
         ).textContent =
+
             "🌙 Ramadan starts tomorrow";
 
-    } else {
+    }
+
+    else {
 
         document.getElementById(
+
             "ramadan-info"
+
         ).textContent =
+
             "🌙 Ramadan in " +
+
             daysRemaining +
+
             " days";
+
     }
+
 }
 
 
-/* =========================================
-   CONVERT 12-HOUR TIME TO MINUTES
-   ========================================= */
+/* =====================================================
+   CONVERT TIME TO MINUTES
+   ===================================================== */
 
 function convertToMinutes(timeString) {
 
     if (!timeString) {
+
         return null;
     }
 
 
     timeString =
+
         timeString.trim();
 
 
     const match =
+
         timeString.match(
+
             /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
+
         );
 
 
     if (!match) {
+
         return null;
     }
 
 
     let hours =
+
         parseInt(
+
             match[1],
+
             10
+
         );
 
 
     const minutes =
+
         parseInt(
+
             match[2],
+
             10
+
         );
 
 
     const period =
+
         match[3].toUpperCase();
 
 
-    if (period === "AM") {
+    if (
 
-        if (hours === 12) {
+        period === "AM"
+
+    ) {
+
+        if (
+
+            hours === 12
+
+        ) {
+
             hours = 0;
         }
 
-    } else {
+    }
 
-        if (hours !== 12) {
+    else {
+
+        if (
+
+            hours !== 12
+
+        ) {
+
             hours += 12;
         }
     }
 
 
     return (
+
         hours * 60
+
     ) + minutes;
 }
 
 
-/* =========================================
+/* =====================================================
    SET TEXT
-   ========================================= */
+   ===================================================== */
 
 function setText(id, text) {
 
     const element =
+
         document.getElementById(id);
 
 
     if (element) {
 
         element.textContent =
+
             text;
     }
 }
 
 
-/* =========================================
-   ACTIVE PRAYER FONT
-   ========================================= */
+/* =====================================================
+   FLASH ONLY THE FONT
+   ===================================================== */
 
 function setFlash(rowId, flash) {
 
     const row =
+
         document.getElementById(rowId);
 
 
     if (!row) {
+
         return;
     }
 
 
     const cells =
+
         row.querySelectorAll("td");
 
 
     cells.forEach(cell => {
 
         let span =
+
             cell.querySelector(
+
                 ".prayer-text"
+
             );
 
+
+        /*
+           Create a span around the
+           text only once.
+        */
 
         if (!span) {
 
             const text =
+
                 cell.textContent;
 
 
@@ -999,16 +1284,21 @@ function setFlash(rowId, flash) {
 
 
             span =
+
                 document.createElement(
+
                     "span"
+
                 );
 
 
             span.textContent =
+
                 text;
 
 
             span.className =
+
                 "prayer-text";
 
 
@@ -1016,180 +1306,284 @@ function setFlash(rowId, flash) {
         }
 
 
+        /*
+           Only the span receives
+           the animation.
+
+           The TD itself does NOT
+           animate.
+        */
+
         if (flash) {
 
             span.classList.add(
+
                 "flash-text"
+
             );
 
-        } else {
+        }
+
+        else {
 
             span.classList.remove(
+
                 "flash-text"
+
             );
         }
 
     });
+
 }
 
 
-/* =========================================
+/* =====================================================
    FIND ACTIVE PRAYER
-   ========================================= */
+   ===================================================== */
 
 function highlightNextPrayer() {
 
-    if (!prayerTimes.fajrIqamah) {
+    if (
+
+        !prayerTimes.fajrIqamah
+
+    ) {
+
         return;
     }
 
 
     const now =
+
         new Date();
 
 
     const currentMinutes =
+
         (
+
             now.getHours() * 60
+
         ) +
+
         now.getMinutes();
 
 
     const prayers = [
 
+
         {
+
             row: "fajr-row",
-            iqamah: prayerTimes.fajrIqamah
+
+            iqamah:
+
+                prayerTimes.fajrIqamah
+
         },
 
+
         {
+
             row: "zuhr-row",
-            iqamah: prayerTimes.zuhrIqamah
+
+            iqamah:
+
+                prayerTimes.zuhrIqamah
+
         },
 
+
         {
+
             row: "asr-row",
-            iqamah: prayerTimes.asrIqamah
+
+            iqamah:
+
+                prayerTimes.asrIqamah
+
         },
 
+
         {
+
             row: "maghrib-row",
-            iqamah: prayerTimes.maghribIqamah
+
+            iqamah:
+
+                prayerTimes.maghribIqamah
+
         },
 
+
         {
+
             row: "isha-row",
-            iqamah: prayerTimes.ishaIqamah
+
+            iqamah:
+
+                prayerTimes.ishaIqamah
+
         }
+
 
     ];
 
 
-    let activePrayer = null;
+    let activePrayer =
+
+        null;
 
 
     /*
-       Active until 10 minutes
-       after Iqamah.
+       Keep the prayer active
+       until 10 minutes after
+       its Iqamah.
     */
 
     for (
+
         const prayer of prayers
+
     ) {
 
         const iqamahMinutes =
+
             convertToMinutes(
+
                 prayer.iqamah
+
             );
 
 
         if (
+
             iqamahMinutes === null
+
         ) {
+
             continue;
         }
 
 
         const highlightUntil =
+
             iqamahMinutes + 10;
 
 
         if (
+
             currentMinutes <
+
             highlightUntil
+
         ) {
 
             activePrayer =
+
                 prayer.row;
+
 
             break;
         }
+
     }
 
 
     /*
-       After all prayers,
-       begin again with Fajr.
+       After the last prayer,
+       start again with Fajr.
     */
 
     if (!activePrayer) {
 
         activePrayer =
+
             "fajr-row";
     }
 
 
+    /*
+       Turn off animation
+       on every row.
+    */
+
     prayers.forEach(
+
         prayer => {
 
             setFlash(
+
                 prayer.row,
+
                 false
+
             );
+
         }
+
     );
 
+
+    /*
+       Turn on animation ONLY
+       for the active prayer.
+    */
 
     setFlash(
+
         activePrayer,
+
         true
+
     );
+
 }
 
 
-/* =========================================
+/* =====================================================
    FETCH PRAYER TIMES
-   ========================================= */
+   ===================================================== */
 
 async function fetchPrayerTimes() {
 
     try {
 
         const response =
+
             await fetch(
+
                 "https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ"
+
             );
 
 
         const data =
+
             await response.json();
 
 
         const salah =
+
             data.data.salah[0];
 
 
         const iqamah =
+
             data.data.iqamah[0];
 
 
         /*
-           Gregorian date from prayer API.
+           Gregorian date.
         */
 
         setText(
+
             "current-date",
+
             salah.date
+
         );
 
 
@@ -1200,19 +1594,25 @@ async function fetchPrayerTimes() {
         prayerTimes = {
 
             fajrIqamah:
+
                 iqamah.fajr,
 
             zuhrIqamah:
+
                 iqamah.zuhr,
 
             asrIqamah:
+
                 iqamah.asr,
 
             maghribIqamah:
+
                 iqamah.maghrib,
 
             ishaIqamah:
+
                 iqamah.isha
+
         };
 
 
@@ -1221,13 +1621,20 @@ async function fetchPrayerTimes() {
         */
 
         setText(
+
             "fajr-time",
+
             salah.fajr
+
         );
 
+
         setText(
+
             "fajr-iqamah",
+
             iqamah.fajr
+
         );
 
 
@@ -1236,13 +1643,20 @@ async function fetchPrayerTimes() {
         */
 
         setText(
+
             "zuhr-time",
+
             salah.zuhr
+
         );
 
+
         setText(
+
             "zuhr-iqamah",
+
             iqamah.zuhr
+
         );
 
 
@@ -1251,13 +1665,20 @@ async function fetchPrayerTimes() {
         */
 
         setText(
+
             "asr-time",
+
             salah.asr
+
         );
 
+
         setText(
+
             "asr-iqamah",
+
             iqamah.asr
+
         );
 
 
@@ -1266,13 +1687,20 @@ async function fetchPrayerTimes() {
         */
 
         setText(
+
             "maghrib-time",
+
             salah.maghrib
+
         );
 
+
         setText(
+
             "maghrib-iqamah",
+
             iqamah.maghrib
+
         );
 
 
@@ -1281,45 +1709,63 @@ async function fetchPrayerTimes() {
         */
 
         setText(
+
             "isha-time",
+
             salah.isha
+
         );
+
 
         setText(
+
             "isha-iqamah",
+
             iqamah.isha
+
         );
 
+
+        /*
+           Update active prayer.
+        */
 
         highlightNextPrayer();
 
     }
 
+
     catch (error) {
 
         console.error(
+
             "Unable to load prayer times:",
+
             error
+
         );
+
     }
+
 }
 
 
-/* =========================================
-   UPDATE EVERYTHING
-   ========================================= */
+/* =====================================================
+   UPDATE DISPLAY
+   ===================================================== */
 
 function updateDisplay() {
 
     updateRamadanInfo();
 
     highlightNextPrayer();
+
 }
 
 
-/* =========================================
+/* =====================================================
    START
-   ========================================= */
+   ===================================================== */
 
 fetchPrayerTimes();
 
@@ -1327,26 +1773,33 @@ updateDisplay();
 
 
 /*
-   Update once every second so the
-   Ramadan information stays current.
+   Update active prayer and
+   Hijri/Ramadan information.
 */
 
 setInterval(
+
     updateDisplay,
+
     1000
+
 );
 
 
 /*
-   Refresh prayer times every 24 hours.
+   Refresh prayer times daily.
 */
 
 setInterval(
+
     fetchPrayerTimes,
+
     24 * 60 * 60 * 1000
+
 );
 
 </script>
 
 </body>
+
 </html>
