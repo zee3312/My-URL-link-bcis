@@ -3,10 +3,14 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Prayer Times</title>
+
 
 <style>
 
@@ -15,6 +19,7 @@
    ===================================================== */
 
 :root {
+
     --henna-green: #4F6F52;
 
     --light-gold: #E7CC78;
@@ -101,23 +106,18 @@ h1,
 
     box-shadow:
 
-        /* bright upper-left bevel */
         inset 7px 7px 10px
         rgba(255,255,255,0.60),
 
-        /* dark lower-right bevel */
         inset -8px -8px 12px
         rgba(70,45,0,0.42),
 
-        /* inner highlight */
         inset 2px 2px 3px
         rgba(255,255,255,0.55),
 
-        /* deep 3D shadow */
         7px 7px 5px
         rgba(0,0,0,0.40),
 
-        /* soft shadow */
         10px 10px 15px
         rgba(0,0,0,0.30);
 
@@ -257,11 +257,6 @@ h1 {
 
     border-collapse: separate;
 
-    /*
-       Space between boxes
-       remains HENNA GREEN.
-    */
-
     border-spacing: 10px;
 
     margin-top: 20px;
@@ -321,35 +316,22 @@ h1 {
             #B8CFDD 100%
         );
 
-    /*
-       STRONG 3D BEVEL
-    */
-
     box-shadow:
 
-        /* very bright raised top-left */
         inset 8px 8px 12px
         rgba(255,255,255,1),
 
-        /* dark recessed bottom-right */
         inset -9px -9px 14px
         rgba(55,75,85,0.40),
 
-        /* secondary inner highlight */
         inset 2px 2px 4px
         rgba(255,255,255,0.95),
 
-        /* strong raised shadow */
         8px 8px 6px
         rgba(0,0,0,0.38),
 
-        /* deeper soft shadow */
         12px 12px 17px
         rgba(0,0,0,0.25);
-
-    /*
-       Raised text effect
-    */
 
     text-shadow:
 
@@ -415,7 +397,7 @@ h1 {
 
 /* =====================================================
    IQAMAH BOXES
-   SAME 3D EFFECT AS ALL OTHER BOXES
+   SAME 3D EFFECT
    ===================================================== */
 
 .prayer-time-table tbody td:nth-child(3) {
@@ -499,10 +481,6 @@ h1 {
 
 /* =====================================================
    NEXT PRAYER FONT ANIMATION
-
-   Starts at 112.5%
-   Peaks at 125%
-   Returns smoothly
    ===================================================== */
 
 @keyframes prayerFontPulse {
@@ -586,7 +564,7 @@ h1 {
 
 .logo {
 
-    position: absolute;
+    position: fixed;
 
     bottom: 20px;
 
@@ -597,7 +575,6 @@ h1 {
     width: 200px;
 
     box-shadow:
-
         5px 5px 12px
         rgba(0,0,0,0.65);
 
@@ -638,15 +615,42 @@ h1 {
 
         font-size: 24px;
     }
+
+
+    .heading {
+
+        margin-right: 0;
+    }
+
+
+    .clock-container {
+
+        margin-left: 0;
+
+        margin-top: 20px;
+    }
+
+
+    .logo {
+
+        width: 120px;
+
+        bottom: 10px;
+
+        right: 10px;
+    }
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <!-- =========================================
      TITLE
@@ -816,16 +820,21 @@ h1 {
     </tbody>
 
 </table>
-```
+
 
 </div>
 
-<img
-src="logo.png"
-alt="Logo"
-class="logo"
 
+<!-- =========================================
+     LOGO
+     ========================================= -->
+
+<img
+    src="logo.png"
+    alt="Logo"
+    class="logo"
 >
+
 
 <script>
 
@@ -838,78 +847,79 @@ let prayerTimes = {};
 
 
 /* =====================================================
-   HIJRI DATE
+   ISLAMIC MONTH NAMES
    ===================================================== */
 
-function getHijriDate(date = new Date()) {
+const hijriMonths = [
+
+    "Muharram",
+
+    "Safar",
+
+    "Rabi' al-Awwal",
+
+    "Rabi' al-Thani",
+
+    "Jumada al-Awwal",
+
+    "Jumada al-Thani",
+
+    "Rajab",
+
+    "Sha'ban",
+
+    "Ramadan",
+
+    "Shawwal",
+
+    "Dhul-Qi'dah",
+
+    "Dhul-Hijjah"
+
+];
+
+
+/* =====================================================
+   GET HIJRI FORMATTER
+   ===================================================== */
+
+function getHijriFormatter() {
 
     try {
 
-        const formatter =
-            new Intl.DateTimeFormat(
-                "en-US-u-ca-islamic-umalqura",
-                {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
-                }
-            );
-
-        return formatter.format(date);
+        return new Intl.DateTimeFormat(
+            "en-US-u-ca-islamic-umalqura",
+            {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric"
+            }
+        );
 
     }
 
     catch (error) {
 
-        const formatter =
-            new Intl.DateTimeFormat(
-                "en-US-u-ca-islamic",
-                {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
-                }
-            );
-
-        return formatter.format(date);
+        return new Intl.DateTimeFormat(
+            "en-US-u-ca-islamic",
+            {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric"
+            }
+        );
     }
 }
 
 
 /* =====================================================
-   HIJRI PARTS
+   GET HIJRI PARTS
    ===================================================== */
 
 function getHijriParts(date = new Date()) {
 
-    let formatter;
-
-    try {
-
-        formatter =
-            new Intl.DateTimeFormat(
-                "en-US-u-ca-islamic-umalqura",
-                {
-                    day: "numeric",
-                    month: "numeric",
-                    year: "numeric"
-                }
-            );
-
-    }
-
-    catch (error) {
-
-        formatter =
-            new Intl.DateTimeFormat(
-                "en-US-u-ca-islamic",
-                {
-                    day: "numeric",
-                    month: "numeric",
-                    year: "numeric"
-                }
-            );
-    }
+    const formatter =
+        getHijriFormatter();
 
 
     const parts =
@@ -938,6 +948,52 @@ function getHijriParts(date = new Date()) {
 
 
     return result;
+}
+
+
+/* =====================================================
+   GET HIJRI DATE
+   =====================================================
+
+   IMPORTANT:
+
+   We intentionally do NOT use:
+
+       month: "long"
+
+   because some browsers can produce
+   an incorrect localized month name.
+
+   Instead, we get the numeric Hijri
+   month and use our own Islamic month
+   names.
+   ===================================================== */
+
+function getHijriDate(date = new Date()) {
+
+    const hijri =
+        getHijriParts(date);
+
+
+    const day =
+        hijri.day;
+
+
+    const month =
+        hijriMonths[hijri.month - 1];
+
+
+    const year =
+        hijri.year;
+
+
+    return (
+        day +
+        " " +
+        month +
+        " " +
+        year
+    );
 }
 
 
@@ -1010,6 +1066,10 @@ function updateRamadanInfo() {
         hijriDate + " AH";
 
 
+    /* -----------------------------------------------
+       CURRENTLY RAMADAN
+       ----------------------------------------------- */
+
     if (hijri.month === 9) {
 
         document.getElementById(
@@ -1021,6 +1081,10 @@ function updateRamadanInfo() {
         return;
     }
 
+
+    /* -----------------------------------------------
+       FIND NEXT RAMADAN
+       ----------------------------------------------- */
 
     const nextRamadan =
         findNextRamadan();
@@ -1329,10 +1393,10 @@ function highlightNextPrayer() {
     let activePrayer = null;
 
 
-    /*
-       First check the 10-minute
-       period after Iqamah.
-    */
+    /* -----------------------------------------------
+       FIRST CHECK:
+       10 MINUTES AFTER IQAMAH
+       ----------------------------------------------- */
 
     for (
         const prayer of prayers
@@ -1372,9 +1436,9 @@ function highlightNextPrayer() {
     }
 
 
-    /*
-       Otherwise find next prayer.
-    */
+    /* -----------------------------------------------
+       OTHERWISE FIND NEXT PRAYER
+       ----------------------------------------------- */
 
     if (!activePrayer) {
 
@@ -1404,9 +1468,10 @@ function highlightNextPrayer() {
     }
 
 
-    /*
-       After Isha, use Fajr.
-    */
+    /* -----------------------------------------------
+       AFTER ISHA:
+       USE FAJR
+       ----------------------------------------------- */
 
     if (!activePrayer) {
 
@@ -1415,9 +1480,9 @@ function highlightNextPrayer() {
     }
 
 
-    /*
-       Stop every row from flashing.
-    */
+    /* -----------------------------------------------
+       STOP EVERY ROW FROM FLASHING
+       ----------------------------------------------- */
 
     prayers.forEach(
         prayer => {
@@ -1431,10 +1496,9 @@ function highlightNextPrayer() {
     );
 
 
-    /*
-       Flash ONLY the active
-       prayer's letters.
-    */
+    /* -----------------------------------------------
+       FLASH ONLY ACTIVE PRAYER
+       ----------------------------------------------- */
 
     setFlash(
         activePrayer,
@@ -1457,8 +1521,32 @@ async function fetchPrayerTimes() {
             );
 
 
+        if (!response.ok) {
+
+            throw new Error(
+                "Prayer API returned HTTP " +
+                response.status
+            );
+        }
+
+
         const data =
             await response.json();
+
+
+        if (
+            !data ||
+            !data.data ||
+            !data.data.salah ||
+            !data.data.iqamah ||
+            !data.data.salah.length ||
+            !data.data.iqamah.length
+        ) {
+
+            throw new Error(
+                "Invalid prayer data received"
+            );
+        }
 
 
         const salah =
@@ -1469,11 +1557,19 @@ async function fetchPrayerTimes() {
             data.data.iqamah[0];
 
 
+        /* -------------------------------------------
+           CURRENT DATE
+           ------------------------------------------- */
+
         document.getElementById(
             "current-date"
         ).textContent =
             salah.date;
 
+
+        /* -------------------------------------------
+           SAVE IQAMAH TIMES
+           ------------------------------------------- */
 
         prayerTimes = {
 
@@ -1494,6 +1590,10 @@ async function fetchPrayerTimes() {
         };
 
 
+        /* -------------------------------------------
+           FAJR
+           ------------------------------------------- */
+
         document.getElementById(
             "fajr-time"
         ).textContent =
@@ -1505,6 +1605,10 @@ async function fetchPrayerTimes() {
         ).textContent =
             iqamah.fajr;
 
+
+        /* -------------------------------------------
+           ZUHR
+           ------------------------------------------- */
 
         document.getElementById(
             "zuhr-time"
@@ -1518,6 +1622,10 @@ async function fetchPrayerTimes() {
             iqamah.zuhr;
 
 
+        /* -------------------------------------------
+           ASR
+           ------------------------------------------- */
+
         document.getElementById(
             "asr-time"
         ).textContent =
@@ -1529,6 +1637,10 @@ async function fetchPrayerTimes() {
         ).textContent =
             iqamah.asr;
 
+
+        /* -------------------------------------------
+           MAGHRIB
+           ------------------------------------------- */
 
         document.getElementById(
             "maghrib-time"
@@ -1542,6 +1654,10 @@ async function fetchPrayerTimes() {
             iqamah.maghrib;
 
 
+        /* -------------------------------------------
+           ISHA
+           ------------------------------------------- */
+
         document.getElementById(
             "isha-time"
         ).textContent =
@@ -1553,6 +1669,10 @@ async function fetchPrayerTimes() {
         ).textContent =
             iqamah.isha;
 
+
+        /* -------------------------------------------
+           UPDATE ACTIVE PRAYER
+           ------------------------------------------- */
 
         highlightNextPrayer();
 
@@ -1589,9 +1709,9 @@ fetchPrayerTimes();
 updateDisplay();
 
 
-/*
-   Update active prayer every second.
-*/
+/* =====================================================
+   UPDATE ACTIVE PRAYER EVERY SECOND
+   ===================================================== */
 
 setInterval(
     updateDisplay,
@@ -1599,9 +1719,9 @@ setInterval(
 );
 
 
-/*
-   Refresh prayer times every 24 hours.
-*/
+/* =====================================================
+   REFRESH PRAYER TIMES EVERY 24 HOURS
+   ===================================================== */
 
 setInterval(
     fetchPrayerTimes,
@@ -1610,5 +1730,7 @@ setInterval(
 
 </script>
 
+
 </body>
+
 </html>
