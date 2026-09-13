@@ -263,30 +263,22 @@ h1,
 
 
 /* =====================================================
-   ACTIVE PRAYER — FONT ONLY
+   ACTIVE PRAYER
+   ONLY THE FONT ANIMATES
    ===================================================== */
 
 .flash-text {
 
-    /*
-       Makes the animation affect only the text.
-    */
     display: inline-block;
 
-    /*
-       Grow/shrink from the center.
-    */
     transform-origin: center center;
 
     /*
-       Slow 12-second animation.
+       6-second smooth pulse
     */
     animation:
-        prayerFontPulse 12s ease-in-out infinite;
+        prayerFontPulse 6s ease-in-out infinite;
 
-    /*
-       Keeps text above nearby elements.
-    */
     position: relative;
 
     z-index: 5;
@@ -294,7 +286,7 @@ h1,
     white-space: nowrap;
 
     /*
-       3D gold lettering.
+       Gold 3D lettering
     */
     text-shadow:
         1px 1px 0 #fff3c4,
@@ -305,105 +297,66 @@ h1,
 
 
 /* =====================================================
-   SLOW FONT PULSE
+   FASTER SMOOTH FONT PULSE
    ===================================================== */
 
 @keyframes prayerFontPulse {
 
-    /*
-       NORMAL SIZE
-    */
-
+    /* NORMAL */
     0% {
         color: #D8B85A;
         transform: scale(1);
     }
 
-
-    /*
-       Slowly begins getting larger
-    */
-
-    20% {
-        color: #D2AE48;
-        transform: scale(1.05);
+    /* Slowly begins growing */
+    15% {
+        color: #D5B250;
+        transform: scale(1.04);
     }
 
-
-    /*
-       110%
-    */
-
-    35% {
-        color: #C9A63F;
+    /* 110% */
+    30% {
+        color: #CDAA45;
         transform: scale(1.10);
     }
 
-
-    /*
-       118%
-    */
-
-    45% {
-        color: #B99532;
+    /* 118% */
+    42% {
+        color: #BD9A36;
         transform: scale(1.18);
     }
 
-
-    /*
-       PEAK — 125%
-    */
-
+    /* PEAK — 125% */
     50% {
         color: #A98224;
         transform: scale(1.25);
     }
 
-
-    /*
-       Hold at 125% briefly
-    */
-
+    /* Brief hold at peak */
     55% {
         color: #A98224;
         transform: scale(1.25);
     }
 
-
-    /*
-       Slowly shrink
-    */
-
-    65% {
-        color: #B99532;
+    /* Smoothly returning */
+    68% {
+        color: #BD9A36;
         transform: scale(1.18);
     }
 
-
-    /*
-       110%
-    */
-
-    75% {
-        color: #C9A63F;
+    /* 110% */
+    80% {
+        color: #CDAA45;
         transform: scale(1.10);
     }
 
-
-    /*
-       105%
-    */
-
-    85% {
-        color: #D2AE48;
-        transform: scale(1.05);
+    /* 104% */
+    90% {
+        color: #D5B250;
+        transform: scale(1.04);
     }
 
-
-    /*
-       BACK TO NORMAL
-    */
-
+    /* NORMAL */
     100% {
         color: #D8B85A;
         transform: scale(1);
@@ -445,14 +398,11 @@ h1,
     .date,
     .prayer-time-table th,
     .prayer-time-table td {
-
         font-size: 30px;
     }
 
     .digital-clock {
-
         font-size: 40px;
-
         width: 380px;
     }
 }
@@ -515,15 +465,12 @@ h1,
     <thead>
 
         <tr>
-
             <th colspan="3">
                 Bay County Islamic Society
             </th>
-
         </tr>
 
         <tr>
-
             <th>
                 Prayer
             </th>
@@ -535,7 +482,6 @@ h1,
             <th>
                 Iqamah
             </th>
-
         </tr>
 
     </thead>
@@ -546,9 +492,7 @@ h1,
 
         <tr id="fajr-row">
 
-            <td>
-                Fajr
-            </td>
+            <td>Fajr</td>
 
             <td id="fajr-time">
                 Loading...
@@ -563,9 +507,7 @@ h1,
 
         <tr id="zuhr-row">
 
-            <td>
-                Zuhr
-            </td>
+            <td>Zuhr</td>
 
             <td id="zuhr-time">
                 Loading...
@@ -580,9 +522,7 @@ h1,
 
         <tr id="asr-row">
 
-            <td>
-                Asr
-            </td>
+            <td>Asr</td>
 
             <td id="asr-time">
                 Loading...
@@ -597,9 +537,7 @@ h1,
 
         <tr id="maghrib-row">
 
-            <td>
-                Maghrib
-            </td>
+            <td>Maghrib</td>
 
             <td id="maghrib-time">
                 Loading...
@@ -614,9 +552,7 @@ h1,
 
         <tr id="isha-row">
 
-            <td>
-                Isha
-            </td>
+            <td>Isha</td>
 
             <td id="isha-time">
                 Loading...
@@ -656,7 +592,7 @@ let prayerTimes = {};
 
 
 /* =========================================
-   CONVERT TIME TO MINUTES
+   CONVERT 12-HOUR TIME TO MINUTES
    ========================================= */
 
 function convertToMinutes(timeString) {
@@ -667,20 +603,25 @@ function convertToMinutes(timeString) {
 
     timeString = timeString.trim();
 
+
     const match =
         timeString.match(
             /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
         );
 
+
     if (!match) {
         return null;
     }
 
+
     let hours =
         parseInt(match[1], 10);
 
+
     const minutes =
         parseInt(match[2], 10);
+
 
     const period =
         match[3].toUpperCase();
@@ -716,6 +657,7 @@ function setText(id, text) {
     const element =
         document.getElementById(id);
 
+
     if (element) {
         element.textContent = text;
     }
@@ -723,13 +665,14 @@ function setText(id, text) {
 
 
 /* =========================================
-   FONT-ONLY ANIMATION
+   ADD / REMOVE FONT ANIMATION
    ========================================= */
 
 function setFlash(rowId, flash) {
 
     const row =
         document.getElementById(rowId);
+
 
     if (!row) {
         return;
@@ -747,7 +690,7 @@ function setFlash(rowId, flash) {
 
 
         /*
-           Create the text wrapper once.
+           Create a text wrapper once.
         */
 
         if (!span) {
@@ -755,14 +698,17 @@ function setFlash(rowId, flash) {
             const text =
                 cell.textContent;
 
+
             cell.textContent = "";
 
 
             span =
                 document.createElement("span");
 
+
             span.textContent =
                 text;
+
 
             span.className =
                 "prayer-text";
@@ -773,8 +719,7 @@ function setFlash(rowId, flash) {
 
 
         /*
-           Only add/remove the animation
-           from the FONT.
+           ONLY THE FONT gets animated.
         */
 
         if (flash) {
@@ -851,8 +796,8 @@ function highlightNextPrayer() {
 
 
     /*
-       Active until 10 minutes
-       after Iqamah.
+       Highlight each prayer until
+       10 minutes after its Iqamah.
     */
 
     for (const prayer of prayers) {
@@ -887,9 +832,8 @@ function highlightNextPrayer() {
 
 
     /*
-       If all prayers have passed,
-       start the next daily cycle
-       with Fajr.
+       After the last prayer,
+       start the next cycle with Fajr.
     */
 
     if (!activePrayer) {
@@ -900,7 +844,8 @@ function highlightNextPrayer() {
 
 
     /*
-       Turn OFF every row.
+       Remove animation from
+       every prayer row.
     */
 
     prayers.forEach(prayer => {
@@ -914,7 +859,7 @@ function highlightNextPrayer() {
 
 
     /*
-       Turn ON only the active row.
+       Animate ONLY the active row.
     */
 
     setFlash(
@@ -950,9 +895,7 @@ async function fetchPrayerTimes() {
             data.data.iqamah[0];
 
 
-        /*
-           DATE
-        */
+        /* DATE */
 
         setText(
             "current-date",
@@ -960,9 +903,7 @@ async function fetchPrayerTimes() {
         );
 
 
-        /*
-           SAVE IQAMAH TIMES
-        */
+        /* SAVE IQAMAH TIMES */
 
         prayerTimes = {
 
@@ -983,9 +924,7 @@ async function fetchPrayerTimes() {
         };
 
 
-        /*
-           FAJR
-        */
+        /* FAJR */
 
         setText(
             "fajr-time",
@@ -998,9 +937,7 @@ async function fetchPrayerTimes() {
         );
 
 
-        /*
-           ZUHR
-        */
+        /* ZUHR */
 
         setText(
             "zuhr-time",
@@ -1013,9 +950,7 @@ async function fetchPrayerTimes() {
         );
 
 
-        /*
-           ASR
-        */
+        /* ASR */
 
         setText(
             "asr-time",
@@ -1028,9 +963,7 @@ async function fetchPrayerTimes() {
         );
 
 
-        /*
-           MAGHRIB
-        */
+        /* MAGHRIB */
 
         setText(
             "maghrib-time",
@@ -1043,9 +976,7 @@ async function fetchPrayerTimes() {
         );
 
 
-        /*
-           ISHA
-        */
+        /* ISHA */
 
         setText(
             "isha-time",
@@ -1059,7 +990,7 @@ async function fetchPrayerTimes() {
 
 
         /*
-           Highlight active prayer.
+           Update active prayer.
         */
 
         highlightNextPrayer();
@@ -1132,7 +1063,7 @@ function updateClock() {
 
 
     /*
-       Check active prayer every second.
+       Check active prayer.
     */
 
     highlightNextPrayer();
@@ -1159,7 +1090,7 @@ setInterval(
 
 
 /*
-   Prayer times refresh every 24 hours.
+   Refresh prayer times every 24 hours.
 */
 
 setInterval(
