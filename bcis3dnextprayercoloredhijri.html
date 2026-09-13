@@ -259,7 +259,11 @@ h1 {
 
     border-spacing: 10px;
 
-    margin-top: 20px;
+    /*
+       10px matches the spacing between
+       all of the individual prayer boxes.
+    */
+    margin-top: 10px;
 
     background-color: var(--henna-green);
 
@@ -953,20 +957,6 @@ function getHijriParts(date = new Date()) {
 
 /* =====================================================
    GET HIJRI DATE
-   =====================================================
-
-   IMPORTANT:
-
-   We intentionally do NOT use:
-
-       month: "long"
-
-   because some browsers can produce
-   an incorrect localized month name.
-
-   Instead, we get the numeric Hijri
-   month and use our own Islamic month
-   names.
    ===================================================== */
 
 function getHijriDate(date = new Date()) {
@@ -1066,10 +1056,6 @@ function updateRamadanInfo() {
         hijriDate + " AH";
 
 
-    /* -----------------------------------------------
-       CURRENTLY RAMADAN
-       ----------------------------------------------- */
-
     if (hijri.month === 9) {
 
         document.getElementById(
@@ -1081,10 +1067,6 @@ function updateRamadanInfo() {
         return;
     }
 
-
-    /* -----------------------------------------------
-       FIND NEXT RAMADAN
-       ----------------------------------------------- */
 
     const nextRamadan =
         findNextRamadan();
