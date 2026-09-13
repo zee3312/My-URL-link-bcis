@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,22 +15,17 @@
    ===================================================== */
 
 :root {
-
     --henna-green: #4F6F52;
 
-    --light-gold: #D8B85A;
-
-    --gold-light: #E7CC78;
-
+    --light-gold: #E7CC78;
+    --gold: #D8B85A;
     --gold-dark: #B99432;
-
     --dark-gold: #A98224;
 
-    --white: #FFFFFF;
-
-    --box-blue: #F0F8FF;
-
-    --box-blue-dark: #C5DCEB;
+    --box-white: #FFFFFF;
+    --box-blue: #F7FBFF;
+    --box-blue-mid: #E5F1F8;
+    --box-blue-dark: #B8CFDD;
 }
 
 
@@ -43,12 +37,11 @@ html,
 body {
 
     margin: 0;
-
     padding: 0;
 
     min-height: 100%;
 
-    background-color: #4F6F52;
+    background-color: var(--henna-green);
 
     font-family: Arial, sans-serif;
 
@@ -66,12 +59,12 @@ body {
 
     max-width: 1200px;
 
-    background-color: #4F6F52;
+    background-color: var(--henna-green);
 }
 
 
 /* =====================================================
-   TITLE
+   TITLE AREA
    ===================================================== */
 
 .heading {
@@ -87,17 +80,15 @@ body {
 h1,
 .date {
 
-    font-size: 50px;
-
     color: #FFFFFF;
 
     background:
-
         linear-gradient(
             145deg,
-            #E7CC78 0%,
-            #D8B85A 50%,
-            #B99432 100%
+            #F5DF9A 0%,
+            #E7CC78 25%,
+            #D1AE50 60%,
+            #A77E22 100%
         );
 
     padding: 10px 20px;
@@ -110,23 +101,39 @@ h1,
 
     box-shadow:
 
-        inset 5px 5px 8px
-        rgba(255,255,255,0.35),
+        /* bright upper-left bevel */
+        inset 7px 7px 10px
+        rgba(255,255,255,0.60),
 
-        inset -5px -5px 8px
-        rgba(0,0,0,0.30),
+        /* dark lower-right bevel */
+        inset -8px -8px 12px
+        rgba(70,45,0,0.42),
 
-        5px 5px 8px
-        rgba(0,0,0,0.50);
+        /* inner highlight */
+        inset 2px 2px 3px
+        rgba(255,255,255,0.55),
+
+        /* deep 3D shadow */
+        7px 7px 5px
+        rgba(0,0,0,0.40),
+
+        /* soft shadow */
+        10px 10px 15px
+        rgba(0,0,0,0.30);
 
     text-shadow:
 
-        1px 1px 0 #9A833D,
-
-        2px 2px 0 #806D32,
-
-        3px 3px 3px
+        1px 1px 0 #B08D35,
+        2px 2px 0 #8B6B21,
+        3px 3px 0 #654C13,
+        4px 4px 5px
         rgba(0,0,0,0.55);
+}
+
+
+h1 {
+
+    font-size: 50px;
 }
 
 
@@ -159,12 +166,12 @@ h1,
     color: #FFFFFF;
 
     background:
-
         linear-gradient(
             145deg,
-            #E7CC78 0%,
-            #D8B85A 50%,
-            #B99432 100%
+            #F5DF9A 0%,
+            #E7CC78 25%,
+            #D1AE50 60%,
+            #A77E22 100%
         );
 
     padding: 18px 25px;
@@ -175,6 +182,8 @@ h1,
 
     text-align: center;
 
+    line-height: 1.1;
+
     font-weight: bold;
 
     position: relative;
@@ -183,33 +192,34 @@ h1,
 
     border-radius: 0;
 
-    border: 5px solid #D8B85A;
+    border: 5px solid #D1AE50;
 
     box-shadow:
 
-        inset 5px 5px 8px
-        rgba(255,255,255,0.35),
+        inset 7px 7px 10px
+        rgba(255,255,255,0.60),
 
-        inset -5px -5px 8px
-        rgba(0,0,0,0.30),
+        inset -8px -8px 12px
+        rgba(70,45,0,0.42),
 
-        5px 5px 8px
-        rgba(0,0,0,0.50);
+        inset 2px 2px 3px
+        rgba(255,255,255,0.55),
+
+        7px 7px 5px
+        rgba(0,0,0,0.40),
+
+        10px 10px 15px
+        rgba(0,0,0,0.30);
 
     text-shadow:
 
-        1px 1px 0 #9A833D,
-
-        2px 2px 0 #806D32,
-
-        3px 3px 3px
+        1px 1px 0 #B08D35,
+        2px 2px 0 #8B6B21,
+        3px 3px 0 #654C13,
+        4px 4px 5px
         rgba(0,0,0,0.55);
 }
 
-
-/* =====================================================
-   HIJRI DATE
-   ===================================================== */
 
 #hijri-date {
 
@@ -222,10 +232,6 @@ h1,
     color: #FFFFFF;
 }
 
-
-/* =====================================================
-   RAMADAN INFORMATION
-   ===================================================== */
 
 #ramadan-info {
 
@@ -243,9 +249,6 @@ h1,
 
 /* =====================================================
    PRAYER TABLE
-
-   EVERYTHING AROUND THE BOXES IS
-   THE SAME HENNA GREEN
    ===================================================== */
 
 .prayer-time-table {
@@ -254,11 +257,16 @@ h1,
 
     border-collapse: separate;
 
+    /*
+       Space between boxes
+       remains HENNA GREEN.
+    */
+
     border-spacing: 10px;
 
     margin-top: 20px;
 
-    background-color: #4F6F52;
+    background-color: var(--henna-green);
 
     border: none;
 
@@ -267,21 +275,22 @@ h1,
 
 
 /* =====================================================
-   FORCE TABLE STRUCTURE GREEN
+   FORCE ALL TABLE GAPS TO HENNA GREEN
    ===================================================== */
 
+.prayer-time-table,
 .prayer-time-table thead,
 .prayer-time-table tbody,
 .prayer-time-table tr {
 
-    background-color: #4F6F52;
+    background-color: var(--henna-green);
 
     border: none;
 }
 
 
 /* =====================================================
-   ALL PRAYER BOXES
+   MAIN PRAYER BOXES
    ===================================================== */
 
 .prayer-time-table th,
@@ -301,47 +310,57 @@ h1,
 
     border-radius: 0;
 
-    color: #4F6F52;
+    color: var(--henna-green);
 
     background:
-
         linear-gradient(
             145deg,
             #FFFFFF 0%,
-            #F0F8FF 50%,
-            #C5DCEB 100%
+            #F7FBFF 25%,
+            #E5F1F8 55%,
+            #B8CFDD 100%
         );
 
     /*
-       3D EFFECT
-
-       IMPORTANT:
-       The bright white effect is
-       INSIDE the box.
-
-       It cannot bleed into the
-       henna-green gaps.
+       STRONG 3D BEVEL
     */
 
     box-shadow:
 
-        inset 5px 5px 8px
+        /* very bright raised top-left */
+        inset 8px 8px 12px
+        rgba(255,255,255,1),
+
+        /* dark recessed bottom-right */
+        inset -9px -9px 14px
+        rgba(55,75,85,0.40),
+
+        /* secondary inner highlight */
+        inset 2px 2px 4px
         rgba(255,255,255,0.95),
 
-        inset -5px -5px 8px
-        rgba(0,0,0,0.20),
+        /* strong raised shadow */
+        8px 8px 6px
+        rgba(0,0,0,0.38),
 
-        5px 5px 8px
-        rgba(0,0,0,0.45);
+        /* deeper soft shadow */
+        12px 12px 17px
+        rgba(0,0,0,0.25);
+
+    /*
+       Raised text effect
+    */
 
     text-shadow:
 
         1px 1px 0 #FFFFFF,
 
-        2px 2px 0 #3F5942,
+        2px 2px 0 #D2E0E7,
 
-        3px 3px 3px
-        rgba(0,0,0,0.30);
+        3px 3px 0 #9DB3BF,
+
+        4px 4px 5px
+        rgba(0,0,0,0.38);
 }
 
 
@@ -356,80 +375,95 @@ h1,
     color: #FFFFFF;
 
     background:
-
         linear-gradient(
             145deg,
-            #E7CC78 0%,
-            #D8B85A 50%,
-            #B99432 100%
+            #F5DF9A 0%,
+            #E7CC78 25%,
+            #D1AE50 60%,
+            #A77E22 100%
         );
 
     box-shadow:
 
-        inset 5px 5px 8px
-        rgba(255,255,255,0.35),
+        inset 8px 8px 12px
+        rgba(255,255,255,0.60),
 
-        inset -5px -5px 8px
-        rgba(0,0,0,0.30),
+        inset -9px -9px 14px
+        rgba(70,45,0,0.45),
 
-        5px 5px 8px
-        rgba(0,0,0,0.50);
+        inset 2px 2px 4px
+        rgba(255,255,255,0.55),
+
+        8px 8px 6px
+        rgba(0,0,0,0.40),
+
+        12px 12px 17px
+        rgba(0,0,0,0.28);
 
     text-shadow:
 
-        1px 1px 0 #9A833D,
+        1px 1px 0 #B08D35,
 
-        2px 2px 0 #806D32,
+        2px 2px 0 #8B6B21,
 
-        3px 3px 3px
+        3px 3px 0 #654C13,
+
+        4px 4px 5px
         rgba(0,0,0,0.55);
 }
 
 
 /* =====================================================
    IQAMAH BOXES
+   SAME 3D EFFECT AS ALL OTHER BOXES
    ===================================================== */
 
 .prayer-time-table tbody td:nth-child(3) {
 
-    background:
+    color: var(--henna-green);
 
+    background:
         linear-gradient(
             145deg,
             #FFFFFF 0%,
-            #F0F8FF 50%,
-            #C5DCEB 100%
+            #F7FBFF 25%,
+            #E5F1F8 55%,
+            #B8CFDD 100%
         );
-
-    color: #4F6F52;
 
     box-shadow:
 
-        inset 5px 5px 8px
+        inset 8px 8px 12px
+        rgba(255,255,255,1),
+
+        inset -9px -9px 14px
+        rgba(55,75,85,0.40),
+
+        inset 2px 2px 4px
         rgba(255,255,255,0.95),
 
-        inset -5px -5px 8px
-        rgba(0,0,0,0.20),
+        8px 8px 6px
+        rgba(0,0,0,0.38),
 
-        5px 5px 8px
-        rgba(0,0,0,0.45);
+        12px 12px 17px
+        rgba(0,0,0,0.25);
 
     text-shadow:
 
         1px 1px 0 #FFFFFF,
 
-        2px 2px 0 #3F5942,
+        2px 2px 0 #D2E0E7,
 
-        3px 3px 3px
-        rgba(0,0,0,0.30);
+        3px 3px 0 #9DB3BF,
+
+        4px 4px 5px
+        rgba(0,0,0,0.38);
 }
 
 
 /* =====================================================
-   ACTIVE PRAYER
-
-   ONLY THE TEXT FLASHES.
-   THE BOX DOES NOT FLASH.
+   ACTIVE / NEXT PRAYER
+   ONLY TEXT FLASHES
    ===================================================== */
 
 .flash-text {
@@ -445,8 +479,8 @@ h1,
     transform-origin: center center;
 
     animation:
-
-        prayerFontPulse 4.5s
+        prayerFontPulse
+        3.2s
         ease-in-out
         infinite;
 
@@ -458,20 +492,17 @@ h1,
 
         3px 3px 0 #8F7020,
 
-        4px 4px 5px
-        rgba(0,0,0,0.40);
+        4px 4px 6px
+        rgba(0,0,0,0.45);
 }
 
 
 /* =====================================================
-   FLASH ANIMATION
+   NEXT PRAYER FONT ANIMATION
 
-   MINIMUM = 112.5%
-
-   MAXIMUM = 125%
-
-   COLOR:
-   LIGHT GOLD -> DARKER GOLD -> LIGHT GOLD
+   Starts at 112.5%
+   Peaks at 125%
+   Returns smoothly
    ===================================================== */
 
 @keyframes prayerFontPulse {
@@ -484,27 +515,27 @@ h1,
     }
 
 
-    15% {
+    12% {
 
-        color: #D5B250;
+        color: #D6B654;
 
-        transform: scale(1.15);
+        transform: scale(1.145);
     }
 
 
-    30% {
+    25% {
 
-        color: #CDAA45;
+        color: #D0AE48;
 
-        transform: scale(1.19);
+        transform: scale(1.18);
     }
 
 
-    42% {
+    40% {
 
-        color: #BD9A36;
+        color: #C39F38;
 
-        transform: scale(1.23);
+        transform: scale(1.22);
     }
 
 
@@ -516,27 +547,27 @@ h1,
     }
 
 
-    58% {
+    60% {
 
-        color: #BD9A36;
+        color: #C39F38;
 
-        transform: scale(1.23);
+        transform: scale(1.22);
     }
 
 
-    70% {
+    75% {
 
-        color: #CDAA45;
+        color: #D0AE48;
 
-        transform: scale(1.19);
+        transform: scale(1.18);
     }
 
 
-    85% {
+    88% {
 
-        color: #D5B250;
+        color: #D6B654;
 
-        transform: scale(1.15);
+        transform: scale(1.145);
     }
 
 
@@ -567,7 +598,7 @@ h1,
 
     box-shadow:
 
-        4px 4px 12px
+        5px 5px 12px
         rgba(0,0,0,0.65);
 
     border-radius: 0;
@@ -628,7 +659,6 @@ h1,
         Prayer Times
     </h1>
 
-
     <div class="date">
 
         <span id="current-date">
@@ -652,7 +682,6 @@ h1,
             Loading Hijri Date...
         </span>
 
-
         <span id="ramadan-info">
             Loading Ramadan information...
         </span>
@@ -668,7 +697,6 @@ h1,
 
 <table class="prayer-time-table">
 
-
     <thead>
 
         <tr>
@@ -678,7 +706,6 @@ h1,
             </th>
 
         </tr>
-
 
         <tr>
 
@@ -794,10 +821,6 @@ h1,
 
 </div>
 
-<!-- =========================================
-     LOGO
-     ========================================= -->
-
 <img
 src="logo.png"
 alt="Logo"
@@ -900,13 +923,9 @@ function getHijriParts(date = new Date()) {
     parts.forEach(part => {
 
         if (
-
             part.type === "day" ||
-
             part.type === "month" ||
-
             part.type === "year"
-
         ) {
 
             result[part.type] =
@@ -935,13 +954,9 @@ function findNextRamadan() {
 
     const testDate =
         new Date(
-
             today.getFullYear(),
-
             today.getMonth(),
-
             today.getDate()
-
         );
 
 
@@ -954,16 +969,11 @@ function findNextRamadan() {
 
 
         if (
-
             hijri.month === 9 &&
-
             hijri.day === 1
-
         ) {
 
-            return new Date(
-                testDate
-            );
+            return new Date(testDate);
         }
 
 
@@ -978,7 +988,7 @@ function findNextRamadan() {
 
 
 /* =====================================================
-   UPDATE RAMADAN INFORMATION
+   UPDATE RAMADAN
    ===================================================== */
 
 function updateRamadanInfo() {
@@ -988,15 +998,11 @@ function updateRamadanInfo() {
 
 
     const hijri =
-        getHijriParts(
-            today
-        );
+        getHijriParts(today);
 
 
     const hijriDate =
-        getHijriDate(
-            today
-        );
+        getHijriDate(today);
 
 
     document.getElementById(
@@ -1034,25 +1040,17 @@ function updateRamadanInfo() {
 
     const todayStart =
         new Date(
-
             today.getFullYear(),
-
             today.getMonth(),
-
             today.getDate()
-
         );
 
 
     const ramadanStart =
         new Date(
-
             nextRamadan.getFullYear(),
-
             nextRamadan.getMonth(),
-
             nextRamadan.getDate()
-
         );
 
 
@@ -1063,11 +1061,8 @@ function updateRamadanInfo() {
 
     const daysRemaining =
         Math.ceil(
-
             difference /
-
             (1000 * 60 * 60 * 24)
-
         );
 
 
@@ -1093,7 +1088,7 @@ function updateRamadanInfo() {
 
 
 /* =====================================================
-   CONVERT PRAYER TIME TO MINUTES
+   CONVERT TIME TO MINUTES
    ===================================================== */
 
 function convertToMinutes(timeString) {
@@ -1110,9 +1105,7 @@ function convertToMinutes(timeString) {
 
     const match =
         timeString.match(
-
             /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
-
         );
 
 
@@ -1159,18 +1152,16 @@ function convertToMinutes(timeString) {
 
 
     return (
-
         hours * 60
-
     ) + minutes;
 }
 
 
 /* =====================================================
-   FLASH ONLY TEXT
+   WRAP ROW TEXT
    ===================================================== */
 
-function setFlash(rowId, flash) {
+function prepareRow(rowId) {
 
     const row =
         document.getElementById(
@@ -1192,40 +1183,72 @@ function setFlash(rowId, flash) {
 
     cells.forEach(cell => {
 
-        let span =
+        if (
             cell.querySelector(
                 ".prayer-text"
-            );
+            )
+        ) {
 
-
-        if (!span) {
-
-            const text =
-                cell.textContent;
-
-
-            cell.textContent = "";
-
-
-            span =
-                document.createElement(
-                    "span"
-                );
-
-
-            span.textContent =
-                text;
-
-
-            span.className =
-                "prayer-text";
-
-
-            cell.appendChild(
-                span
-            );
+            return;
         }
 
+
+        const text =
+            cell.textContent;
+
+
+        cell.textContent = "";
+
+
+        const span =
+            document.createElement(
+                "span"
+            );
+
+
+        span.className =
+            "prayer-text";
+
+
+        span.textContent =
+            text;
+
+
+        cell.appendChild(
+            span
+        );
+    });
+}
+
+
+/* =====================================================
+   FLASH ONLY TEXT
+   ===================================================== */
+
+function setFlash(rowId, flash) {
+
+    const row =
+        document.getElementById(
+            rowId
+        );
+
+
+    if (!row) {
+
+        return;
+    }
+
+
+    prepareRow(rowId);
+
+
+    const spans =
+        row.querySelectorAll(
+            ".prayer-text"
+        );
+
+
+    spans.forEach(span => {
 
         if (flash) {
 
@@ -1247,12 +1270,14 @@ function setFlash(rowId, flash) {
 
 
 /* =====================================================
-   FIND CURRENT / NEXT PRAYER
+   FIND NEXT PRAYER
    ===================================================== */
 
 function highlightNextPrayer() {
 
-    if (!prayerTimes.fajrIqamah) {
+    if (
+        !prayerTimes.fajrIqamah
+    ) {
 
         return;
     }
@@ -1263,9 +1288,7 @@ function highlightNextPrayer() {
 
 
     const currentMinutes =
-
         (now.getHours() * 60) +
-
         now.getMinutes();
 
 
@@ -1304,8 +1327,7 @@ function highlightNextPrayer() {
     ];
 
 
-    let activePrayer =
-        null;
+    let activePrayer = null;
 
 
     /*
@@ -1313,7 +1335,9 @@ function highlightNextPrayer() {
        period after Iqamah.
     */
 
-    for (const prayer of prayers) {
+    for (
+        const prayer of prayers
+    ) {
 
         const iqamahMinutes =
             convertToMinutes(
@@ -1334,13 +1358,11 @@ function highlightNextPrayer() {
 
 
         if (
-
             currentMinutes >=
             iqamahMinutes &&
 
             currentMinutes <
             highlightUntil
-
         ) {
 
             activePrayer =
@@ -1352,14 +1374,14 @@ function highlightNextPrayer() {
 
 
     /*
-       If we are not inside the
-       10-minute period, find the
-       next upcoming prayer.
+       Otherwise find next prayer.
     */
 
     if (!activePrayer) {
 
-        for (const prayer of prayers) {
+        for (
+            const prayer of prayers
+        ) {
 
             const iqamahMinutes =
                 convertToMinutes(
@@ -1368,12 +1390,10 @@ function highlightNextPrayer() {
 
 
             if (
-
                 iqamahMinutes !== null &&
 
                 iqamahMinutes >
                 currentMinutes
-
             ) {
 
                 activePrayer =
@@ -1397,22 +1417,24 @@ function highlightNextPrayer() {
 
 
     /*
-       Turn off all flashing.
+       Stop every row from flashing.
     */
 
-    prayers.forEach(prayer => {
+    prayers.forEach(
+        prayer => {
 
-        setFlash(
-            prayer.row,
-            false
-        );
+            setFlash(
+                prayer.row,
+                false
+            );
 
-    });
+        }
+    );
 
 
     /*
-       Turn on flashing ONLY
-       for the active prayer.
+       Flash ONLY the active
+       prayer's letters.
     */
 
     setFlash(
@@ -1432,9 +1454,7 @@ async function fetchPrayerTimes() {
 
         const response =
             await fetch(
-
                 "https://masjidal.com/api/v1/time/range?masjid_id=PAPyordJ"
-
             );
 
 
@@ -1472,7 +1492,6 @@ async function fetchPrayerTimes() {
 
             ishaIqamah:
                 iqamah.isha
-
         };
 
 
@@ -1551,7 +1570,7 @@ async function fetchPrayerTimes() {
 
 
 /* =====================================================
-   UPDATE EVERYTHING
+   UPDATE DISPLAY
    ===================================================== */
 
 function updateDisplay() {
@@ -1572,29 +1591,22 @@ updateDisplay();
 
 
 /*
-   Check every second so the
-   active prayer changes automatically.
+   Update active prayer every second.
 */
 
 setInterval(
-
     updateDisplay,
-
     1000
-
 );
 
 
 /*
-   Refresh prayer data every 24 hours.
+   Refresh prayer times every 24 hours.
 */
 
 setInterval(
-
     fetchPrayerTimes,
-
     24 * 60 * 60 * 1000
-
 );
 
 </script>
