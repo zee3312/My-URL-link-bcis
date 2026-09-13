@@ -22,9 +22,9 @@
 }
 
 
-/* =========================================
+/* ================================
    BODY
-   ========================================= */
+   ================================ */
 
 body {
     font-family: Arial, sans-serif;
@@ -35,9 +35,9 @@ body {
 }
 
 
-/* =========================================
-   MAIN CONTAINER
-   ========================================= */
+/* ================================
+   CONTAINER
+   ================================ */
 
 .container {
     margin: 50px auto;
@@ -45,9 +45,9 @@ body {
 }
 
 
-/* =========================================
-   TITLE AND DATE
-   ========================================= */
+/* ================================
+   TITLE / DATE
+   ================================ */
 
 .heading {
     display: inline-block;
@@ -82,9 +82,9 @@ h1,
 }
 
 
-/* =========================================
+/* ================================
    DIGITAL CLOCK
-   ========================================= */
+   ================================ */
 
 .clock-container {
     display: inline-block;
@@ -151,19 +151,15 @@ h1,
 }
 
 
-/* =========================================
+/* ================================
    PRAYER TABLE
-   ========================================= */
+   ================================ */
 
 .prayer-time-table {
     width: 100%;
 
     border-collapse: separate;
 
-    /*
-       Green background shows through
-       the gaps between the boxes.
-    */
     border-spacing: 8px;
 
     margin-top: 20px;
@@ -172,9 +168,9 @@ h1,
 }
 
 
-/* =========================================
-   ALL PRAYER BOXES
-   ========================================= */
+/* ================================
+   PRAYER BOXES
+   ================================ */
 
 .prayer-time-table th,
 .prayer-time-table td {
@@ -213,9 +209,9 @@ h1,
 }
 
 
-/* =========================================
+/* ================================
    TABLE HEADERS
-   ========================================= */
+   ================================ */
 
 .prayer-time-table th {
 
@@ -238,9 +234,9 @@ h1,
 }
 
 
-/* =========================================
+/* ================================
    IQAMAH BOXES
-   ========================================= */
+   ================================ */
 
 .prayer-time-table tbody td:nth-child(3) {
 
@@ -267,165 +263,157 @@ h1,
 
 
 /* =====================================================
-   ACTIVE PRAYER FONT
+   ACTIVE PRAYER — FONT ONLY
    ===================================================== */
-
-/*
-   IMPORTANT:
-
-   Only the text inside .flash-text is animated.
-
-   The table row does NOT animate.
-   The table cell does NOT animate.
-   The box does NOT animate.
-   The background does NOT animate.
-*/
 
 .flash-text {
 
+    /*
+       Makes the animation affect only the text.
+    */
     display: inline-block;
 
     /*
-       This is critical.
-       It makes the text grow from its own center.
+       Grow/shrink from the center.
     */
     transform-origin: center center;
 
     /*
-       7 second slow animation.
+       Slow 12-second animation.
     */
     animation:
-        prayerFontPulse 7s ease-in-out infinite;
+        prayerFontPulse 12s ease-in-out infinite;
 
     /*
-       3D dark-gold lettering.
+       Keeps text above nearby elements.
+    */
+    position: relative;
+
+    z-index: 5;
+
+    white-space: nowrap;
+
+    /*
+       3D gold lettering.
     */
     text-shadow:
         1px 1px 0 #fff3c4,
         2px 2px 0 #b89432,
         3px 3px 0 #8f7020,
         4px 4px 5px rgba(0,0,0,0.40);
-
-    /*
-       Keep the animated text above
-       the surrounding content.
-    */
-    position: relative;
-
-    z-index: 5;
-
-    /*
-       Prevent the enlarged text from
-       being treated as a different box.
-    */
-    white-space: nowrap;
 }
 
 
 /* =====================================================
-   7-SECOND FONT ANIMATION
+   SLOW FONT PULSE
    ===================================================== */
 
 @keyframes prayerFontPulse {
 
     /*
-       0%
        NORMAL SIZE
-       LIGHT GOLD
     */
+
     0% {
-
         color: #D8B85A;
-
-        transform:
-            scale(1);
+        transform: scale(1);
     }
 
 
     /*
-       20%
-       110% SIZE
+       Slowly begins getting larger
     */
+
     20% {
-
-        color: #D0AC45;
-
-        transform:
-            scale(1.10);
+        color: #D2AE48;
+        transform: scale(1.05);
     }
 
 
     /*
-       40%
-       120% SIZE
+       110%
     */
-    40% {
 
-        color: #B99532;
-
-        transform:
-            scale(1.20);
-    }
-
-
-    /*
-       50%
-       PEAK
-       EXACTLY 125% SIZE
-    */
-    50% {
-
-        color: #A98224;
-
-        transform:
-            scale(1.25);
-    }
-
-
-    /*
-       60%
-       HOLD AT 125%
-    */
-    60% {
-
-        color: #A98224;
-
-        transform:
-            scale(1.25);
-    }
-
-
-    /*
-       80%
-       RETURNING TO NORMAL
-    */
-    80% {
-
+    35% {
         color: #C9A63F;
-
-        transform:
-            scale(1.10);
+        transform: scale(1.10);
     }
 
 
     /*
-       100%
-       NORMAL SIZE
-       LIGHT GOLD
+       118%
     */
+
+    45% {
+        color: #B99532;
+        transform: scale(1.18);
+    }
+
+
+    /*
+       PEAK — 125%
+    */
+
+    50% {
+        color: #A98224;
+        transform: scale(1.25);
+    }
+
+
+    /*
+       Hold at 125% briefly
+    */
+
+    55% {
+        color: #A98224;
+        transform: scale(1.25);
+    }
+
+
+    /*
+       Slowly shrink
+    */
+
+    65% {
+        color: #B99532;
+        transform: scale(1.18);
+    }
+
+
+    /*
+       110%
+    */
+
+    75% {
+        color: #C9A63F;
+        transform: scale(1.10);
+    }
+
+
+    /*
+       105%
+    */
+
+    85% {
+        color: #D2AE48;
+        transform: scale(1.05);
+    }
+
+
+    /*
+       BACK TO NORMAL
+    */
+
     100% {
-
         color: #D8B85A;
-
-        transform:
-            scale(1);
+        transform: scale(1);
     }
 }
 
 
-/* =========================================
+/* ================================
    LOGO
-   ========================================= */
+   ================================ */
 
 .logo {
 
@@ -447,9 +435,9 @@ h1,
 }
 
 
-/* =========================================
+/* ================================
    MOBILE
-   ========================================= */
+   ================================ */
 
 @media (max-width: 768px) {
 
@@ -461,14 +449,12 @@ h1,
         font-size: 30px;
     }
 
-
     .digital-clock {
 
         font-size: 40px;
 
         width: 380px;
     }
-
 }
 
 </style>
@@ -480,9 +466,7 @@ h1,
 <div class="container">
 
 ```
-<!-- =====================================
-     TITLE
-     ===================================== -->
+<!-- TITLE -->
 
 <div class="heading">
 
@@ -501,9 +485,7 @@ h1,
 </div>
 
 
-<!-- =====================================
-     CLOCK
-     ===================================== -->
+<!-- CLOCK -->
 
 <div class="clock-container">
 
@@ -526,9 +508,7 @@ h1,
 </div>
 
 
-<!-- =====================================
-     PRAYER TABLE
-     ===================================== -->
+<!-- PRAYER TABLE -->
 
 <table class="prayer-time-table">
 
@@ -541,7 +521,6 @@ h1,
             </th>
 
         </tr>
-
 
         <tr>
 
@@ -657,9 +636,7 @@ h1,
 
 </div>
 
-<!-- =====================================
-     LOGO
-     ===================================== -->
+<!-- LOGO -->
 
 <img
 src="logo.png"
@@ -679,7 +656,7 @@ let prayerTimes = {};
 
 
 /* =========================================
-   CONVERT 12-HOUR TIME TO MINUTES
+   CONVERT TIME TO MINUTES
    ========================================= */
 
 function convertToMinutes(timeString) {
@@ -688,35 +665,22 @@ function convertToMinutes(timeString) {
         return null;
     }
 
-
-    timeString =
-        timeString.trim();
-
+    timeString = timeString.trim();
 
     const match =
         timeString.match(
             /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
         );
 
-
     if (!match) {
         return null;
     }
 
-
     let hours =
-        parseInt(
-            match[1],
-            10
-        );
-
+        parseInt(match[1], 10);
 
     const minutes =
-        parseInt(
-            match[2],
-            10
-        );
-
+        parseInt(match[2], 10);
 
     const period =
         match[3].toUpperCase();
@@ -752,26 +716,20 @@ function setText(id, text) {
     const element =
         document.getElementById(id);
 
-
     if (element) {
-
-        element.textContent =
-            text;
-
+        element.textContent = text;
     }
-
 }
 
 
 /* =========================================
-   FLASH ONLY THE FONT
+   FONT-ONLY ANIMATION
    ========================================= */
 
 function setFlash(rowId, flash) {
 
     const row =
         document.getElementById(rowId);
-
 
     if (!row) {
         return;
@@ -784,16 +742,12 @@ function setFlash(rowId, flash) {
 
     cells.forEach(cell => {
 
-
         let span =
-            cell.querySelector(
-                ".flash-text"
-            );
+            cell.querySelector(".prayer-text");
 
 
         /*
-           Create the text span
-           only once.
+           Create the text wrapper once.
         */
 
         if (!span) {
@@ -801,31 +755,27 @@ function setFlash(rowId, flash) {
             const text =
                 cell.textContent;
 
-
-            cell.textContent =
-                "";
+            cell.textContent = "";
 
 
             span =
-                document.createElement(
-                    "span"
-                );
-
+                document.createElement("span");
 
             span.textContent =
                 text;
-
 
             span.className =
                 "prayer-text";
 
 
-            cell.appendChild(
-                span
-            );
-
+            cell.appendChild(span);
         }
 
+
+        /*
+           Only add/remove the animation
+           from the FONT.
+        */
 
         if (flash) {
 
@@ -842,12 +792,11 @@ function setFlash(rowId, flash) {
         }
 
     });
-
 }
 
 
 /* =========================================
-   FIND CURRENT/NEXT PRAYER
+   FIND ACTIVE PRAYER
    ========================================= */
 
 function highlightNextPrayer() {
@@ -898,19 +847,15 @@ function highlightNextPrayer() {
     ];
 
 
-    let activePrayer =
-        null;
+    let activePrayer = null;
 
 
     /*
-       Highlight the prayer until
-       10 minutes after Iqamah.
+       Active until 10 minutes
+       after Iqamah.
     */
 
-    for (
-        const prayer
-        of prayers
-    ) {
+    for (const prayer of prayers) {
 
         const iqamahMinutes =
             convertToMinutes(
@@ -918,9 +863,7 @@ function highlightNextPrayer() {
             );
 
 
-        if (
-            iqamahMinutes === null
-        ) {
+        if (iqamahMinutes === null) {
             continue;
         }
 
@@ -945,44 +888,39 @@ function highlightNextPrayer() {
 
     /*
        If all prayers have passed,
-       use Fajr for the next cycle.
+       start the next daily cycle
+       with Fajr.
     */
 
     if (!activePrayer) {
 
         activePrayer =
             "fajr-row";
-
     }
 
 
     /*
-       Turn OFF animation
-       for every prayer.
+       Turn OFF every row.
     */
 
-    prayers.forEach(
-        prayer => {
+    prayers.forEach(prayer => {
 
-            setFlash(
-                prayer.row,
-                false
-            );
+        setFlash(
+            prayer.row,
+            false
+        );
 
-        }
-    );
+    });
 
 
     /*
-       Turn ON animation
-       only for the active prayer.
+       Turn ON only the active row.
     */
 
     setFlash(
         activePrayer,
         true
     );
-
 }
 
 
@@ -1042,7 +980,6 @@ async function fetchPrayerTimes() {
 
             ishaIqamah:
                 iqamah.isha
-
         };
 
 
@@ -1122,13 +1059,12 @@ async function fetchPrayerTimes() {
 
 
         /*
-           START ACTIVE PRAYER
+           Highlight active prayer.
         */
 
         highlightNextPrayer();
 
     }
-
 
     catch (error) {
 
@@ -1138,7 +1074,6 @@ async function fetchPrayerTimes() {
         );
 
     }
-
 }
 
 
@@ -1197,11 +1132,10 @@ function updateClock() {
 
 
     /*
-       Recheck active prayer.
+       Check active prayer every second.
     */
 
     highlightNextPrayer();
-
 }
 
 
@@ -1215,7 +1149,7 @@ updateClock();
 
 
 /*
-   Update clock every second.
+   Clock updates every second.
 */
 
 setInterval(
@@ -1225,7 +1159,7 @@ setInterval(
 
 
 /*
-   Refresh prayer times every 24 hours.
+   Prayer times refresh every 24 hours.
 */
 
 setInterval(
